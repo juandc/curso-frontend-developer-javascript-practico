@@ -1,33 +1,51 @@
 const menuEmail = document.querySelector('.navbar-email');
 const leftIconMenu = document.querySelector('.menu');
 const menuCarritoIcon = document.querySelector('.navbar-shopping-cart');
+const shopIconClose = document.querySelector('.product-detail-close')
 const desktopMenu = document.querySelector('.desktop-menu');
 const mobileMenu = document.querySelector('.mobile-menu');
 const shoppingCartContainer = document.querySelector('#shoppingCartContainer');
+const productDetailContainer = document.querySelector('#productDetail');
 const cardsContainer = document.querySelector('.cards-container');
 
 menuEmail.addEventListener('click', toggleDesktopMenu);
 leftIconMenu.addEventListener('click', toggleMobileMenu);
 menuCarritoIcon.addEventListener('click', toggleShopMenu);
+shopIconClose.addEventListener('click', closeMenuIconShopClose)
 
+// estas funciones sirven para pdoer abrir y cerrar los elementos que contiene la web
 function toggleDesktopMenu() {
   desktopMenu.classList.toggle("inactive");
+  mobileMenu.classList.add("inactive");
   shoppingCartContainer.classList.add("inactive");
-
+  productDetailContainer.classList.add("inactive");
 }
-//con estos que están arriba y abajo, se puede activar y desactivar elementos
-//dentro de una página web
 
 function toggleMobileMenu() {
   mobileMenu.classList.toggle("inactive");
+  desktopMenu.classList.add("inactive");
   shoppingCartContainer.classList.add("inactive");
+  productDetailContainer.classList.add("inactive");
 }
 
 function toggleShopMenu() {
   shoppingCartContainer.classList.toggle("inactive");
   mobileMenu.classList.add("inactive");
   desktopMenu.classList.add("inactive");
+  productDetailContainer.classList.add('inactive');
 }
+
+function openProductDetailAside() {
+  productDetailContainer.classList.remove('inactive');
+}
+
+function closeMenuIconShopClose() {
+  shoppingCartContainer.classList.toggle('inactive');
+  productDetailContainer.classList.add('inactive');
+  mobileMenu.classList.add("inactive");
+  desktopMenu.classList.add("inactive");
+}
+
 //vamos a agregar un array que meta productos auto
 const productsList = [];
 productsList.push({
@@ -68,8 +86,10 @@ for (product of arr) {
   const productCard = document.createElement('div');
   productCard.classList.add('product-card');
 
+  // producto = { name, price image] _> product.image}
   const productoImg = document.createElement('img');
   productoImg.setAttribute('src', product.image);
+  productoImg.addEventListener('click', openProductDetailAside);
 
   const productInfo = document.createElement('div');
   productInfo.classList.add('product-info');
