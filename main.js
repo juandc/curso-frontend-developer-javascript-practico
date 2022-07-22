@@ -3,7 +3,7 @@ const leftIconMenu = document.querySelector('.menu');
 const menuCarritoIcon = document.querySelector('.navbar-shopping-cart');
 const desktopMenu = document.querySelector('.desktop-menu');
 const mobileMenu = document.querySelector('.mobile-menu');
-const aside = document.querySelector('.product-detail');
+const shoppingCartContainer = document.querySelector('#shoppingCartContainer');
 const cardsContainer = document.querySelector('.cards-container');
 
 menuEmail.addEventListener('click', toggleDesktopMenu);
@@ -12,7 +12,7 @@ menuCarritoIcon.addEventListener('click', toggleShopMenu);
 
 function toggleDesktopMenu() {
   desktopMenu.classList.toggle("inactive");
-  aside.classList.add("inactive");
+  shoppingCartContainer.classList.add("inactive");
 
 }
 //con estos que están arriba y abajo, se puede activar y desactivar elementos
@@ -20,11 +20,11 @@ function toggleDesktopMenu() {
 
 function toggleMobileMenu() {
   mobileMenu.classList.toggle("inactive");
-  aside.classList.add("inactive");
+  shoppingCartContainer.classList.add("inactive");
 }
 
 function toggleShopMenu() {
-  aside.classList.toggle("inactive");
+  shoppingCartContainer.classList.toggle("inactive");
   mobileMenu.classList.add("inactive");
   desktopMenu.classList.add("inactive");
 }
@@ -101,5 +101,3 @@ for (product of arr) {
 }  
 };
 renderProducts(productsList);
-
-s
