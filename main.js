@@ -101,3 +101,5 @@ for (product of arr) {
 }  
 };
 renderProducts(productsList);
+
+s
