@@ -13,6 +13,8 @@ body {
   margin: 0;
   font-family: 'Quicksand', sans-serif;
 }
+
+/* oculta el menu email */
 .inactive {
   display: none;
 }
@@ -165,6 +167,7 @@ aside {
   box-sizing: border-box;
   position: absolute;
   right: 0;
+  
 }
 
 /* ShoppingCart */
@@ -302,16 +305,16 @@ aside {
 /* Product List */
 .cards-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 240px);
+  grid-template-columns: repeat(auto-fill, 350px);
   gap: 26px;
   place-content: center;
   margin-top: 20px;
 }
 .product-card {
-  width: 240px;
+  width: 350px;
 }
 .product-card img {
-  width: 240px;
+  width: 350px;
   height: 240px;
   border-radius: 20px;
   object-fit: cover;
@@ -342,7 +345,7 @@ aside {
   color: var(--very-light-pink);
 }
 
-
+/*ocultamos el menu-email desktop-menu cuando estamos por debajo de 640px*/
 @media (max-width: 640px) {
   .menu {
     display: block;
@@ -372,7 +375,7 @@ aside {
     height: 140px;
   }
 }
-
+/*Desaparecemos el mobile-menu apenas sobrepase 641px*/
 @media (min-width: 641px) {
   .mobile-menu {
     display: none;
