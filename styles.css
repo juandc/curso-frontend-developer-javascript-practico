@@ -67,6 +67,7 @@ nav {
 }
 .navbar-shopping-cart {
   position: relative;
+  cursor: pointer;
 }
 .navbar-shopping-cart div {
   width: 16px;
@@ -94,6 +95,7 @@ nav {
   border: 1px solid var(--very-light-pink);
   border-radius: 6px;
   padding: 20px 20px 0 20px;
+  z-index: 2;
 }
 .desktop-menu ul {
   list-style: none;
@@ -126,7 +128,7 @@ nav {
 .mobile-menu {
   background-color: var(--white);
   position: absolute;
-  top: 60px;
+  top: 61px;
   left: 0;
   width: 100%;
   padding: 24px;
