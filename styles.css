@@ -1,4 +1,3 @@
-/* General */
 :root {
   --white: #FFFFFF;
   --black: #000000;
@@ -13,12 +12,11 @@ body {
   margin: 0;
   font-family: 'Quicksand', sans-serif;
 }
+
 .inactive {
-  display: none;
+  display:none;
 }
 
-
-/* Navbar (general) */
 nav {
   display: flex;
   justify-content: space-between;
@@ -27,6 +25,7 @@ nav {
 }
 .menu {
   display: none;
+  cursor: pointer;
 }
 .logo {
   width: 100px;
@@ -61,7 +60,8 @@ nav {
 }
 .navbar-email {
   color: var(--very-light-pink);
-  cursor: pointer;
+
+  cursor:pointer;
   font-size: var(--sm);
   margin-right: 12px;
 }
@@ -83,12 +83,11 @@ nav {
   align-items: center;
 }
 
-/* Menu en desktop */
-.desktop-menu {
-  position: absolute;
-  top: 60px;
-  right: 60px;
-  background: var(--white);
+.desktop-menu{
+  position:absolute;
+  background:var(--white);
+  top:60px;
+  right:60px;
   width: 100px;
   height: auto;
   border: 1px solid var(--very-light-pink);
@@ -122,14 +121,16 @@ nav {
   display: inline-block;
 }
 
-/* Menu en mobile */
+/* MOBILE MENU*/
 .mobile-menu {
+
   background-color: var(--white);
-  position: absolute;
-  top: 60px;
-  left: 0;
-  width: 100%;
   padding: 24px;
+  position:absolute;
+  top: 60px;
+  left:4px;
+  width:100%;
+  padding:24px;
 }
 .mobile-menu a {
   text-decoration: none;
@@ -156,15 +157,15 @@ nav {
   font-size: var(--sm);
   color: var(--hospital-green) !important;
 }
-
-
-/* Aside (product detail y carrito) */
+/*ASIDE para menus tanto shopping cart como product detail*/
+/*SHOPPING CART*/
 aside {
   background-color: var(--white);
   width: 360px;
   box-sizing: border-box;
   position: absolute;
   right: 0;
+  margin:16px 8px;
 }
 
 /* ShoppingCart */
@@ -298,7 +299,7 @@ aside {
   justify-content: center;
 }
 
-
+/*PRODUCTS CARDS*/
 /* Product List */
 .cards-container {
   display: grid;
@@ -343,6 +344,8 @@ aside {
 }
 
 
+/*Esto se ejecuta desde 0
+hasta 640 px*/
 @media (max-width: 640px) {
   .menu {
     display: block;
@@ -353,14 +356,13 @@ aside {
   .navbar-email {
     display: none;
   }
-  .desktop-menu {
-    display: none;
+  .desktop-menu{
+    display:none;
   }
-
-  aside {
+  .productDetail {
     width: 100%;
   }
-
+  /*EL DEL LISTADO DE PRODUCTOS*/
   .cards-container {
     grid-template-columns: repeat(auto-fill, 140px);
   }
@@ -371,10 +373,12 @@ aside {
     width: 140px;
     height: 140px;
   }
-}
 
-@media (min-width: 641px) {
-  .mobile-menu {
-    display: none;
+
+
+}
+@media (min-width:641px){
+  .mobile-menu{
+    display:none;
   }
 }
