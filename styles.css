@@ -242,6 +242,9 @@ aside {
   font-weight: bold;
   height: 50px;
 }
+#btnCerrarCarrito{
+  cursor: pointer;
+}
 
 /* PRODUCTOS LISTA */
 
