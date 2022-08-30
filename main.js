@@ -69,12 +69,12 @@ productList.push({
 productList.push({
   name: 'Pantalla',
   price: 220,
-  image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+  image: 'https://images.pexels.com/photos/38568/apple-imac-ipad-workplace-38568.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 });
 productList.push({
   name: 'Compu',
   price: 620,
-  image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+  image: 'https://media.istockphoto.com/photos/modern-desktop-pc-with-curved-screen-picture-id506040816?k=20&m=506040816&s=612x612&w=0&h=C1KaLVq94noTERB7Sv9qgYhrt7sb3tyurSap5pQRKZ0=',
 });
 
 function renderProducts(arr) {
