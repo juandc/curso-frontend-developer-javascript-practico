@@ -130,3 +130,4 @@ renderProducts(productList);
 /* product es el objeto que recorre cada uno de los elementos
  en el array, para crear con document.createElement
 cada uno de los elementos del HTML, pero en JS.*/
+
