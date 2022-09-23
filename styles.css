@@ -13,12 +13,12 @@ body {
   margin: 0;
   font-family: 'Quicksand', sans-serif;
 }
+
 .inactive {
   display: none;
 }
 
-
-/* Navbar (general) */
+/* navBar general */
 nav {
   display: flex;
   justify-content: space-between;
@@ -61,7 +61,7 @@ nav {
 }
 .navbar-email {
   color: var(--very-light-pink);
-  cursor: pointer;
+  cursor:pointer;
   font-size: var(--sm);
   margin-right: 12px;
 }
@@ -83,7 +83,7 @@ nav {
   align-items: center;
 }
 
-/* Menu en desktop */
+/* menu en desktop */
 .desktop-menu {
   position: absolute;
   top: 60px;
@@ -122,7 +122,7 @@ nav {
   display: inline-block;
 }
 
-/* Menu en mobile */
+/*menu mobile  */
 .mobile-menu {
   background-color: var(--white);
   position: absolute;
@@ -157,8 +157,8 @@ nav {
   color: var(--hospital-green) !important;
 }
 
+/* aside: product detail y carrito */
 
-/* Aside (product detail y carrito) */
 aside {
   background-color: var(--white);
   width: 360px;
@@ -167,8 +167,8 @@ aside {
   right: 0;
 }
 
-/* ShoppingCart */
-#shoppingCartContainer {
+/* Shopping Cart */
+#shoppingCartContainer{
   padding: 0 24px;
 }
 .title-container {
@@ -240,6 +240,7 @@ aside {
 }
 
 /* ProductDetail */
+
 .product-detail-close {
   background: var(--white);
   width: 14px;
@@ -260,22 +261,22 @@ aside {
   object-fit: cover;
   border-radius: 0 0 20px 20px;
 }
-#productDetail .product-info {
+#ProductDetail .product-info {
   margin: 24px 24px 0 24px;
 }
-#productDetail .product-info p:nth-child(1) {
+#ProductDetail .product-info p:nth-child(1) {
   font-weight: bold;
   font-size: var(--md);
   margin-top: 0;
   margin-bottom: 4px;
 }
-#productDetail .product-info p:nth-child(2) {
+#ProductDetail .product-info p:nth-child(2) {
   color: var(--very-light-pink);
   font-size: var(--md);
   margin-top: 0;
   margin-bottom: 36px;
 }
-#productDetail .product-info p:nth-child(3) {
+#ProductDetail .product-info p:nth-child(3) {
   color: var(--very-light-pink);
   font-size: var(--sm);
   margin-top: 0;
@@ -298,8 +299,8 @@ aside {
   justify-content: center;
 }
 
+/* product list */
 
-/* Product List */
 .cards-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, 240px);
@@ -342,7 +343,6 @@ aside {
   color: var(--very-light-pink);
 }
 
-
 @media (max-width: 640px) {
   .menu {
     display: block;
@@ -356,11 +356,9 @@ aside {
   .desktop-menu {
     display: none;
   }
-
   aside {
     width: 100%;
   }
-
   .cards-container {
     grid-template-columns: repeat(auto-fill, 140px);
   }
