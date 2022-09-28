@@ -1,10 +1,13 @@
 const menuEmail = document.querySelector('.navbar-email');
 const desktopMenu = document.querySelector('.desktop-menu');
 const carritoIcon = document.querySelector('.navbar-shopping-cart');
+const productDetailCloseIcon = document.querySelector('.product-detail-close');
+
 
 const burgerMenu = document.querySelector('.menu');
 const mobileMenu = document.querySelector('.mobile-menu');
 const shoppingCartContainer = document.querySelector('#shoppingCartContainer');
+const productDetailContainer = document.querySelector('#productDetail');
 const cardsContainer = document.querySelector('.cards-container');
 
 
@@ -12,7 +15,7 @@ const cardsContainer = document.querySelector('.cards-container');
 menuEmail.addEventListener('click', toggleDesktopMenu);
 burgerMenu.addEventListener('click', toggleMobileMenu);
 carritoIcon.addEventListener('click', toggleCarritoAside);
-
+productDetailCloseIcon.addEventListener('click', closeProductDetailAside);
 
 // "element.classList": es una propiedad de solo lectura que muestra las clases dentro de una etiqueta en un HTML 
 // "toggle(string[,forced])": es un método que cuando hay un solo argumento como en el ejemplo de abajo alterna el valor de la clase
@@ -60,6 +63,19 @@ function toggleCarritoAside () {
         shoppingCartContainer.classList.toggle('inactive');   
 }
 
+function openProductDetailAside ( ) {
+    productDetailContainer.classList.remove('inactive')
+}
+
+function closeProductDetailAside ( ) {
+    productDetailContainer.classList.add('inactive')
+
+}
+
+
+
+
+
 const productList = [];
 
 productList.push({
@@ -93,62 +109,46 @@ productList.push({
 
 
 
-/* 
-<div class="cards-container">
 
-    <div class="product-card">
-    <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-    <div class="product-info">
-        <div>
-        <p>$120,00</p>
-        <p>Bike</p>
-        </div>
-        <figure>
-        <img src="./icons/bt_add_to_cart.svg" alt="">
-        </figure>
-    </div>
+function renderProducts(arr) {
 
-</div>
- */
+    for (product of arr) {
+        const productCard = document.createElement ('div');
+        productCard.classList.add ('product-card');
 
 
-for (product of productList) {
-    const productCard = document.createElement ('div');
-    productCard.classList.add ('product-card');
-
-    const productImg = document.createElement('img');
-    productImg.setAttribute('src', product.image);
-
-    const productInfo = document.createElement ('div');
-    productInfo.classList.add ('product-info');
-
-    const productInfoDiv = document.createElement('div');
-
-    const productPrice = document.createElement('p');
-    productPrice.innerText = '$' + product.price;
-    const productName = document.createElement('p');
-    productName.innerText = product.name;
-
-    productInfoDiv.appendChild(productPrice);
-    productInfoDiv.appendChild(productName);
-
-
-
-
-    const productInfoFigure = document.createElement('figure');
-    const productImgCart = document.createElement('figure');
-    productImgCart.setAttribute('src', './icons/bt_add_to_cart.svg');
-
-    productInfoFigure.appendChild(productImgCart);
-
-    productInfo.appendChild(productInfoDiv);
-    productInfo.appendChild(productInfoFigure);
-
-    productCard.appendChild(productImg);
-    productCard.appendChild(productInfo);
-
-    cardsContainer.appendChild(productCard);
-
-
+        // product= {name, price, image} --> product.image
+        const productImg = document.createElement('img');
+        productImg.setAttribute('src', product.image);
+        productImg.addEventListener('click', openProductDetailAside)
+    
+        const productInfo = document.createElement ('div');
+        productInfo.classList.add ('product-info');
+    
+        const productInfoDiv = document.createElement('div');
+    
+        const productPrice = document.createElement('p');
+        productPrice.innerText = '$' + product.price;
+        const productName = document.createElement('p');
+        productName.innerText = product.name;
+    
+        productInfoDiv.appendChild(productPrice);
+        productInfoDiv.appendChild(productName);
+    
+        const productInfoFigure = document.createElement('figure');
+        const productImgCart = document.createElement('figure');
+        productImgCart.setAttribute('src', './icons/bt_add_to_cart.svg');
+    
+        productInfoFigure.appendChild(productImgCart);
+    
+        productInfo.appendChild(productInfoDiv);
+        productInfo.appendChild(productInfoFigure);
+    
+        productCard.appendChild(productImg);
+        productCard.appendChild(productInfo);
+    
+        cardsContainer.appendChild(productCard);
+    }
 }
 
+renderProducts(productList);
