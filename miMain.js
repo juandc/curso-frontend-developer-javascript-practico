@@ -67,6 +67,9 @@ productList.push({
 });
 
 
+
+
+
 for (parametro of productList){
     const productCard= document.createElement('div');
     productCard.classList.add('product-card');
