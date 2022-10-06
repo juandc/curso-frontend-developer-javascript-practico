@@ -3,7 +3,7 @@ const desktopMenu = document.querySelector(".desktop-menu");
 const mobileMenu = document.querySelector(".mobile-menu");
 const menHamIcon = document.querySelector(".menu");
 const menuCarritoIcon = document.querySelector(".navbar-shopping-cart");
-const carritoCompras = document.querySelector(".product-detail");
+const carritoCompras = document.querySelector("#carrito-compras");
 const cardContainer = document.querySelector(".cards-container");
 
 menHamIcon.addEventListener("click", aparecerMenuMobil);
@@ -114,4 +114,4 @@ function renderProducts(arr) {
 }
 }
 
-renderProducts(productArrayList); // Esto para renderizar pero con orden de na función. Esto podría servir para cuando demos click en algún elemento se despliegue la lista.
+renderProducts(productArrayList); // Esto para renderizar pero con orden de una función. Esto podría servir para cuando demos click en algún elemento se despliegue la lista.
