@@ -1,119 +1,134 @@
-const menuEmail = document.querySelector('.navbar-email');
-const menuHamIcon = document.querySelector('.menu');
-const menuCarritoIcon = document.querySelector('.navbar-shopping-cart');
-const productDetailCloseIcon = document.querySelector('.product-detail-close')
-const desktopMenu = document.querySelector('.desktop-menu');
-const mobileMenu = document.querySelector('.mobile-menu');
-const shoppingCartContainer = document.querySelector('#shoppingCartContainer');
-const productDetailContainer = document.querySelector('#productDetail');
-const cardsContainer = document.querySelector('.cards-container');
+const menuEmail =document.querySelector(".navbar-email");
+const desktopMenu = document.querySelector(".desktop-menu");
+const mobileMenu = document.querySelector(".mobile-menu");
+const menHamIcon = document.querySelector(".menu");
+const menuCarritoIcon = document.querySelector(".navbar-shopping-cart");
+const carritoCompras = document.querySelector("#carrito-compras");
+const cardContainer = document.querySelector(".cards-container");
+const productDetail = document.querySelector("#detalle-producto");
+const closeProductDetail = document.querySelector(".product-detail-close");
 
-menuEmail.addEventListener('click', toggleDesktopMenu);
-menuHamIcon.addEventListener('click', toggleMobileMenu);
-menuCarritoIcon.addEventListener('click', toggleCarritoAside);
-productDetailCloseIcon.addEventListener('click', closeProductDetailAside);
+menHamIcon.addEventListener("click", aparecerMenuMobil);
+menuEmail.addEventListener("click", aparecerMenu);
+menuCarritoIcon.addEventListener("click", aparecerMenuCarrito);
+closeProductDetail.addEventListener("click", closeDetailProd);
 
-function toggleDesktopMenu() {
-  const isAsideClosed = shoppingCartContainer.classList.contains('inactive');
-
-  if (!isAsideClosed) {
-    shoppingCartContainer.classList.add('inactive');
-  }
-  
-  desktopMenu.classList.toggle('inactive');
+function aparecerMenu() {
+  desktopMenu.classList.toggle("inactive");
+  carritoCompras.classList.add("inactive");
+  productDetail.classList.add("inactive");
 }
 
-function toggleMobileMenu() {
-  const isAsideClosed = shoppingCartContainer.classList.contains('inactive');
-
-  if (!isAsideClosed) {
-    shoppingCartContainer.classList.add('inactive'); 
-  }
-
-  closeProductDetailAside();
-  
-  mobileMenu.classList.toggle('inactive');
+function aparecerMenuMobil() {
+  mobileMenu.classList.toggle("inactive");
+  carritoCompras.classList.add("inactive");
+  productDetail.classList.add("inactive");
 }
 
-function toggleCarritoAside() {
-  const isMobileMenuClosed = mobileMenu.classList.contains('inactive');
-  
-  if (!isMobileMenuClosed) {
-    mobileMenu.classList.add('inactive');
-  }
-
-  const isProductDetailClosed = productDetailContainer.classList.contains('inactive');
-  
-  if (!isProductDetailClosed) {
-    productDetailContainer.classList.add('inactive'); 
-  }
-  
-  shoppingCartContainer.classList.toggle('inactive');
+function aparecerMenuCarrito() {
+  carritoCompras.classList.toggle("inactive");
+  mobileMenu.classList.add("inactive");
+  desktopMenu.classList.add("inactive");
+  productDetail.classList.add("inactive");
 }
 
-function openProductDetailAside() {
-  shoppingCartContainer.classList.add('inactive');
-  productDetailContainer.classList.remove('inactive');
+function mostrarDetalleProducto(){
+  productDetail.classList.remove("inactive");
+  mobileMenu.classList.add("inactive");
+  desktopMenu.classList.add("inactive");
 }
 
-function closeProductDetailAside() {
-  productDetailContainer.classList.add('inactive');
+function closeDetailProd(){
+  productDetail.classList.add("inactive");
 }
 
-const productList = [];
-productList.push({
-  name: 'Bike',
-  price: 120,
-  image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-});
-productList.push({
-  name: 'Pantalla',
-  price: 220,
-  image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-});
-productList.push({
-  name: 'Compu',
-  price: 620,
-  image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-});
+const productArrayList = [];
+
+productArrayList.push({
+  nombre: "bike",
+  precio: 120,
+  imagen: "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+})
+
+productArrayList.push({
+  nombre: "Computadora",
+  precio: 60,
+  imagen: "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+})
+
+productArrayList.push({
+  nombre: "Calendario especial",
+  precio: 15,
+  imagen: "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+})
+
+productArrayList.push({
+  nombre: "caneca",
+  precio: 34,
+  imagen: "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+})
+
+
+/*<div class="product-card">
+  <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+  <div class="product-info"> divProductInfo
+    <div> divCaract
+      <p>$120,00</p>
+      <p>Bike</p>
+    </div>
+    <figure> imgProducto
+      <img src="./icons/bt_add_to_cart.svg" alt="">
+    </figure>
+  </div>
+</div> */
+
+//La recomendación de JUan DC era mejor colocar esto en una función para poder reutilizar código.
+//Pienso que también es bueno para reutilizar código.
 
 function renderProducts(arr) {
   for (product of arr) {
-    const productCard = document.createElement('div');
-    productCard.classList.add('product-card');
+  const divCard= document.createElement("div");
+  divCard.classList.add("product-card");
+
+  const productCardImg= document.createElement("img");
+  productCardImg.setAttribute("src", product.imagen);
+  productCardImg.addEventListener("click",mostrarDetalleProducto)
+
   
-    // product= {name, price, image} -> product.image
-    const productImg = document.createElement('img');
-    productImg.setAttribute('src', product.image);
-    productImg.addEventListener('click', openProductDetailAside);
+  //Product-info, tiene dos hijos de etiqueta p
+
+  const divProductInfo = document.createElement("div");
+  divProductInfo.classList.add("product-info");
   
-    const productInfo = document.createElement('div');
-    productInfo.classList.add('product-info');
+  const divCaract = document.createElement("div");
+    
+  const precio =document.createElement("p");
+  precio.innerText= "$$$" + product.precio;
+  const nombre =document.createElement("p");
+  nombre.innerText=product.nombre;
+
+  divCaract.appendChild(precio); //Padre de las 2 p
+  divCaract.appendChild(nombre); //Padre de las 2 p
+
   
-    const productInfoDiv = document.createElement('div');
-  
-    const productPrice = document.createElement('p');
-    productPrice.innerText = '$' + product.price;
-    const productName = document.createElement('p');
-    productName.innerText = product.name;
-  
-    productInfoDiv.appendChild(productPrice);
-    productInfoDiv.appendChild(productName);
-  
-    const productInfoFigure = document.createElement('figure');
-    const productImgCart = document.createElement('img');
-    productImgCart.setAttribute('src', './icons/bt_add_to_cart.svg');
-  
-    productInfoFigure.appendChild(productImgCart);
-  
-    productInfo.appendChild(productInfoDiv);
-    productInfo.appendChild(productInfoFigure);
-  
-    productCard.appendChild(productImg);
-    productCard.appendChild(productInfo);
-  
-    cardsContainer.appendChild(productCard);
-  }
+  //La imagen de cada producto
+
+  const imgProducto = document.createElement("figure");
+  const imagenReal = document.createElement("img");
+  imagenReal.setAttribute("src", "./icons/bt_add_to_cart.svg");
+
+  imgProducto.appendChild(imagenReal); //padre de la imagen contenida en figure
+
+  divProductInfo.appendChild(divCaract); // Padre de las info y de la imagen del producto.
+  divProductInfo.appendChild(imgProducto); // Padre de las info y de la imagen del producto.
+
+
+  divCard.appendChild(productCardImg); // El padre de todos
+  divCard.appendChild(divProductInfo); // El padre de todos
+
+  cardContainer.appendChild(divCard); //El que contiene todos los elementos de html de la sección.
+
+}
 }
 
-renderProducts(productList);
+renderProducts(productArrayList); // Esto para renderizar pero con orden de una función. Esto podría servir para cuando demos click en algún elemento se despliegue la lista.
