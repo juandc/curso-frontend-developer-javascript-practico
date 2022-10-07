@@ -5,25 +5,41 @@ const menHamIcon = document.querySelector(".menu");
 const menuCarritoIcon = document.querySelector(".navbar-shopping-cart");
 const carritoCompras = document.querySelector("#carrito-compras");
 const cardContainer = document.querySelector(".cards-container");
+const productDetail = document.querySelector("#detalle-producto");
+const closeProductDetail = document.querySelector(".product-detail-close");
 
 menHamIcon.addEventListener("click", aparecerMenuMobil);
 menuEmail.addEventListener("click", aparecerMenu);
 menuCarritoIcon.addEventListener("click", aparecerMenuCarrito);
+closeProductDetail.addEventListener("click", closeDetailProd);
 
 function aparecerMenu() {
   desktopMenu.classList.toggle("inactive");
   carritoCompras.classList.add("inactive");
+  productDetail.classList.add("inactive");
 }
 
 function aparecerMenuMobil() {
   mobileMenu.classList.toggle("inactive");
   carritoCompras.classList.add("inactive");
+  productDetail.classList.add("inactive");
 }
 
 function aparecerMenuCarrito() {
   carritoCompras.classList.toggle("inactive");
   mobileMenu.classList.add("inactive");
   desktopMenu.classList.add("inactive");
+  productDetail.classList.add("inactive");
+}
+
+function mostrarDetalleProducto(){
+  productDetail.classList.remove("inactive");
+  mobileMenu.classList.add("inactive");
+  desktopMenu.classList.add("inactive");
+}
+
+function closeDetailProd(){
+  productDetail.classList.add("inactive");
 }
 
 const productArrayList = [];
@@ -76,6 +92,7 @@ function renderProducts(arr) {
 
   const productCardImg= document.createElement("img");
   productCardImg.setAttribute("src", product.imagen);
+  productCardImg.addEventListener("click",mostrarDetalleProducto)
 
   
   //Product-info, tiene dos hijos de etiqueta p
