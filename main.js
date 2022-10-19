@@ -63,18 +63,18 @@ function closeProductDetailAside() {
 const productList = [];
 productList.push({
   name: 'Bike',
-  price: 120,
-  image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-});
-productList.push({
-  name: 'Pantalla',
-  price: 220,
-  image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-});
-productList.push({
-  name: 'Compu',
   price: 620,
   image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+});
+productList.push({
+  name: 'Laptop',
+  price: 4220,
+  image: 'https://images.pexels.com/photos/1229861/pexels-photo-1229861.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+});
+productList.push({
+  name: 'Canvas',
+  price: 120,
+  image: 'https://images.pexels.com/photos/6693731/pexels-photo-6693731.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 });
 
 function renderProducts(arr) {
@@ -93,7 +93,7 @@ function renderProducts(arr) {
     const productInfoDiv = document.createElement('div');
   
     const productPrice = document.createElement('p');
-    productPrice.innerText = '$' + product.price;
+    productPrice.innerText = 'S/.' + product.price;
     const productName = document.createElement('p');
     productName.innerText = product.name;
   
