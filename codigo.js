@@ -5,10 +5,19 @@ const desktopMenu = document.querySelector('.desktop-menu');
 const mobileMenu = document.querySelector('.mobile-menu');
 const aside = document.querySelector('.product-detail');
 const cardsContainer = document.querySelector('.cards-container');
+const detalles_producto = document.querySelector(".product-detail-detalles-producto")
 
 menuEmail.addEventListener('click', toggleDesktopMenu);
 menuHamIcon.addEventListener('click', toggleMobileMenu);
 menuCarritoIcon.addEventListener('click', toggleCarritoAside);
+
+
+
+
+function mostrarDetallesProducto()
+{
+  detalles_producto.classList.toggle("inactivo")
+}
 
 function toggleDesktopMenu() {
   const isAsideClosed = aside.classList.contains('inactivo');
@@ -122,12 +131,21 @@ function renderProductos(array)
       
         cardsContainer.appendChild(productCard);
       }
-    
-    
+ 
+      
 }
 
 
+
 renderProductos(productList)
-  
+
+
+
+
+
+
+
+
+
 
 
