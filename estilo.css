@@ -376,6 +376,7 @@
   }
   .product-detail-close:hover {
     cursor: pointer;
+    background: #dfc4c4;
   }
    img:nth-child(2) {
     width: 100%;
