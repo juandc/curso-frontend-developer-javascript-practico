@@ -1,4 +1,4 @@
-/* General */
+/* General*/
 :root {
   --white: #FFFFFF;
   --black: #000000;
@@ -17,8 +17,8 @@ body {
   display: none;
 }
 
+/* Navbar (general)*/
 
-/* Navbar (general) */
 nav {
   display: flex;
   justify-content: space-between;
@@ -83,11 +83,12 @@ nav {
   align-items: center;
 }
 
-/* Menu en desktop */
+/* Menu en Desktop*/
+
 .desktop-menu {
   position: absolute;
   top: 60px;
-  right: 60px;
+  right: 55px;
   background: var(--white);
   width: 100px;
   height: auto;
@@ -122,7 +123,8 @@ nav {
   display: inline-block;
 }
 
-/* Menu en mobile */
+/* Menu en Mobile*/
+
 .mobile-menu {
   background-color: var(--white);
   position: absolute;
@@ -157,8 +159,8 @@ nav {
   color: var(--hospital-green) !important;
 }
 
+/* Aside (product detail y carrito)*/
 
-/* Aside (product detail y carrito) */
 aside {
   background-color: var(--white);
   width: 360px;
@@ -167,8 +169,9 @@ aside {
   right: 0;
 }
 
-/* ShoppingCart */
-#shoppingCartContainer {
+/* ShoppingCart*/
+
+#shoppingCartContairner {
   padding: 0 24px;
 }
 .title-container {
@@ -239,7 +242,8 @@ aside {
   height: 50px;
 }
 
-/* ProductDetail */
+/* ProductDetail*/
+
 .product-detail-close {
   background: var(--white);
   width: 14px;
@@ -298,8 +302,8 @@ aside {
   justify-content: center;
 }
 
+/* Product list */
 
-/* Product List */
 .cards-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, 240px);
@@ -342,6 +346,7 @@ aside {
   color: var(--very-light-pink);
 }
 
+/* @Madia */
 
 @media (max-width: 640px) {
   .menu {
@@ -356,11 +361,9 @@ aside {
   .desktop-menu {
     display: none;
   }
-
   aside {
     width: 100%;
   }
-
   .cards-container {
     grid-template-columns: repeat(auto-fill, 140px);
   }
@@ -371,8 +374,8 @@ aside {
     width: 140px;
     height: 140px;
   }
-}
 
+}
 @media (min-width: 641px) {
   .mobile-menu {
     display: none;
