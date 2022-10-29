@@ -52,7 +52,7 @@ function toggleCarritoAside() {
 }
 
 function openProductDetailAside() {
-  shoppingCartContainer.classList.add('inactive');
+  aside.classList.add('inactive');
   productDetailContainer.classList.remove('inactive');
 }
 
