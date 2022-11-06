@@ -5,7 +5,7 @@ const listeningMenu = document.querySelector(".menu");
 const mobileChange = document.querySelector(".mobile-menu");
 
 const carrito = document.querySelector(".navbar-shopping-cart");
-const productos = document.querySelector(".product-detail");
+const productos = document.querySelector("#shopingCardContain");
 
 const ChangeMobile = () => {
   if (!productos.classList.contains("inactive")) {
@@ -768,11 +768,24 @@ const products = [
 
 const renderProducts = (products) => {
   products.map((product) => {
+    const OpenProductDetailAsise = () => {
+      productCardDedail.classList.remove("inactive");
+    };
+
+    const Closed = () => {
+      productCardDedail.classList.add("inactive");
+    };
+
+    const productCardDedail = document.querySelector("#productDetail");
+    const close = document.querySelector("#close");
+    close.addEventListener("click", Closed);
+
     const productsCard = document.createElement("div");
     productsCard.classList.add("product-card");
 
     const img = document.createElement("img");
     img.setAttribute("src", product.imagen);
+    img.addEventListener("click", OpenProductDetailAsise);
 
     const divInfo = document.createElement("div");
     divInfo.classList.add("product-info");
