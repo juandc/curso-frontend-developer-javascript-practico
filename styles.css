@@ -7,6 +7,12 @@
   --sm: 14px;
   --md: 16px;
   --lg: 18px;
+  /*New palette colors*/
+  --color-principal:rgb(35,34,45);
+  --color-secundary: rgb(28,41,23);
+  --color-white-254: rgb(255,255,254);
+  --color-red: rgb(139,51,77);
+  --color-blue:rgb(53,95,123);
 }
 body {
   margin: 0;
@@ -22,7 +28,8 @@ nav {
   display: flex;
   justify-content: space-between;
   padding: 0 24px;
-  border-bottom: 1px solid var(--very-light-pink);
+  background-color: var(--color-principal);
+  border-bottom: 2px solid var(--color-red);
 }
 .menu {
   display: none;
