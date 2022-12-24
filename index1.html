@@ -4,18 +4,18 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Store: CODIVAR</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="./styles.css">
 
+  <title>YardSale: tienda online de cositas chidas</title>
 </head>
 <body>
-    <!-- TODO MENU NAV -->
   <nav>
-    <img src="./icons/icon_menu.svg" alt="menu" class="menu menu-icon">
+    <img src="./icons/icon_menu.svg" alt="menu" class="menu">
 
     <div class="navbar-left">
       <img src="./logos/logo_yard_sale.svg" alt="logo" class="logo">
@@ -52,73 +52,68 @@
       </ul>
     </div>
 
-    <!-- * Menu de Usuario Registrado -->
-
     <div class="desktop-menu inactive">
-        <ul>
-          <li>
-            <a href="/" class="title">My orders</a>
-          </li>
-    
-          <li>
-            <a href="/">My account</a>
-          </li>
-    
-          <li>
-            <a href="/">Sign out</a>
-          </li>
-        </ul>
+      <ul>
+        <li>
+          <a href="/" class="title">My orders</a>
+        </li>
+  
+        <li>
+          <a href="/">My account</a>
+        </li>
+  
+        <li>
+          <a href="/">Sign out</a>
+        </li>
+      </ul>
     </div>
 
-    <!-- * Mobile Menu -->
-
     <div class="mobile-menu inactive">
-        <ul>
-          <li>
-            <a href="/">CATEGORIES</a>
-          </li>
-          <li>
-            <a href="/">All</a>
-          </li>
-          <li>
-            <a href="/">Clothes</a>
-          </li>
-          <li>
-            <a href="/">Electronics</a>
-          </li>
-          <li>
-            <a href="/">Furnitures</a>
-          </li>
-          <li>
-            <a href="/">Toys</a>
-          </li>
-          <li>
-            <a href="/">Other</a>
-          </li>
-        </ul>
-    
-        <ul>
-          <li>
-            <a href="/">My orders</a>
-          </li>
-          <li>
-            <a href="/">My account</a>
-          </li>
-        </ul>
-    
-        <ul>
-          <li>
-            <a href="/" class="email">platzi@example.com</a>
-          </li>
-          <li>
-            <a href="/" class="sign-out">Sign out</a>
-          </li>
-        </ul>
+      <ul>
+        <li>
+          <a href="/">CATEGORIES</a>
+        </li>
+        <li>
+          <a href="/">All</a>
+        </li>
+        <li>
+          <a href="/">Clothes</a>
+        </li>
+        <li>
+          <a href="/">Electronics</a>
+        </li>
+        <li>
+          <a href="/">Furnitures</a>
+        </li>
+        <li>
+          <a href="/">Toys</a>
+        </li>
+        <li>
+          <a href="/">Other</a>
+        </li>
+      </ul>
+  
+      <ul>
+        <li>
+          <a href="/">My orders</a>
+        </li>
+        <li>
+          <a href="/">My account</a>
+        </li>
+      </ul>
+  
+      <ul>
+        <li>
+          <a href="/" class="email">platzi@example.com</a>
+        </li>
+        <li>
+          <a href="/" class="sign-out">Sign out</a>
+        </li>
+      </ul>
     </div>
   </nav>
 
-  <!-- aside muestra los productos que he agregado al carrito -->
-  <aside id="" class="product-detail inactive">
+  <aside id="shoppingCartContainer" class="inactive">
     <div class="title-container">
       <img src="./icons/flechita.svg" alt="arrow">
       <p class="title">My order</p>
@@ -166,8 +161,7 @@
   </div>
   </aside>
 
-  <!-- detalle del producto -->
-  <aside class="product-detail-alone inactive">
+  <aside id="productDetail" class="inactive">
     <div class="product-detail-close">
       <img src="./icons/icon_close.png" alt="close">
     </div>
@@ -182,8 +176,6 @@
       </button>
     </div>
   </aside>
-
-  <!-- Seccion del carrito, productos -->
 
   <section class="main-container">
     <div class="cards-container">
@@ -203,6 +195,7 @@
 
     </div>
   </section>
-  <script src="/main.js"></script>
+
+  <script src="./main.js"></script>
 </body>
 </html>
