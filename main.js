@@ -130,5 +130,4 @@ for (const product of productList) {
     cardsContainer.appendChild(productCard);
 
     
-    
 }
