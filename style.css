@@ -93,6 +93,7 @@
     background: var(--white);
     right: 60px;
     top: 60px;
+    z-index: 3;
   }
   .desktop-menu ul {
     list-style: none;
@@ -169,6 +170,7 @@
     box-sizing: border-box;
     position: absolute;
     right: 0;
+    background-color: var(--white);
     
   }
   .title-container {
