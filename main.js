@@ -4,29 +4,8 @@ const menuIconMobile = document.querySelector('.menuIconMobile');
 const menuMobile = document.querySelector('.mobile-menu');
 const shoppingCart = document.querySelector('.navbar-shopping-cart');
 const menuShopping = document.querySelector('.product-detail')
-
-navbarEmail.addEventListener('click',toggleMenuEmail);
-menuIconMobile.addEventListener('click', toggleMenuIconMobile);
-shoppingCart.addEventListener('click',toggleMenuShopping)
-
-function toggleMenuEmail () {
-  meanuEmail.classList.toggle('inactive')
-};
-function toggleMenuIconMobile() {
-  menuMobile.classList.toggle('inactive')
-  // SI MENUSHOPPING ABIERTO CERRAMOS ESTE MISMO
-  if (!menuShopping.classList.contains('inactive')) {
-    menuShopping.classList.add('inactive')
-  }
-};
-function toggleMenuShopping() {
-  menuShopping.classList.toggle('inactive')
-  // SI MOBILEMOBILE ESTA ABIERTO CERRAMOS ESTE MISMO
-  if (!menuMobile.classList.contains('inactive')) {
-    menuMobile.classList.add('inactive')
-    
-  }
-};
+const productDetail = document.querySelector('.product-detail-in')
+const productDetailClose = document.querySelector('.product-detail-in-close')
 
 productList = [];
 productList.push({
@@ -82,5 +61,47 @@ for (product of productList) {
   imgCart.src = './icons/bt_add_to_cart.svg'
   figure.appendChild(imgCart)
   
+  imgProduct.addEventListener('click',openProduct)
+}
+
+
+navbarEmail.addEventListener('click',toggleMenuEmail);
+menuIconMobile.addEventListener('click', toggleMenuIconMobile);
+shoppingCart.addEventListener('click',toggleMenuShopping)
+productDetailClose.addEventListener('click',closeProduct)
+
+function toggleMenuEmail () {
+  meanuEmail.classList.toggle('inactive')
+};
+function toggleMenuIconMobile() {
+  menuMobile.classList.toggle('inactive')
+  // SI Menu Mobile esta abierto no podemos abrir product detail y carrit de compras
+  if (!menuIconMobile.classList.contains('inactive')) {
+    menuShopping.classList.add('inactive')
+    productDetail.classList.add('inactive')
+  }
+};
+function toggleMenuShopping() {
+  menuShopping.classList.toggle('inactive')
+
+  // Si carrito de compras esta abierto no podemos abrir a product detail y Menu Mobile
+  if (!menuShopping.classList.contains('inactive')) {
+    productDetail.classList.add('inactive')
+    menuMobile.classList.add('inactive')
+  }
+};
+
+
+function openProduct() {
+  productDetail.classList.remove('inactive');
+  // Si ProductDetail esta abierto vamos no podemos abrir carrito de comprar Y MENU MOBILE
+  if (!productDetail.classList.contains('inactive')){
+    menuShopping.classList.add('inactive')
+    menuMobile.classList.add('inactive')
+  }
+}
+
+function closeProduct () {
+  productDetail.classList.add('inactive');
 }
 
