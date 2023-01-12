@@ -1,22 +1,21 @@
 /* General */
 :root {
-  --white: #FFFFFF;
+  --white: #ffffff;
   --black: #000000;
-  --very-light-pink: #C7C7C7;
-  --text-input-field: #F7F7F7;
-  --hospital-green: #ACD9B2;
+  --very-light-pink: #c7c7c7;
+  --text-input-field: #f7f7f7;
+  --hospital-green: #acd9b2;
   --sm: 14px;
   --md: 16px;
   --lg: 18px;
 }
 body {
   margin: 0;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
 }
 .inactive {
   display: none;
 }
-
 
 /* Navbar (general) */
 nav {
@@ -156,7 +155,6 @@ nav {
   font-size: var(--sm);
   color: var(--hospital-green) !important;
 }
-
 
 /* Aside (product detail y carrito) */
 aside {
@@ -298,7 +296,6 @@ aside {
   justify-content: center;
 }
 
-
 /* Product List */
 .cards-container {
   display: grid;
@@ -341,7 +338,6 @@ aside {
   margin-bottom: 0;
   color: var(--very-light-pink);
 }
-
 
 @media (max-width: 640px) {
   .menu {
