@@ -202,6 +202,8 @@ aside {
   box-sizing: border-box;
   position: absolute;
   right: 0;
+  padding: 24px;
+
 }
 
 
