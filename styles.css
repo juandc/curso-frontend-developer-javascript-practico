@@ -8,6 +8,8 @@
   --md: 16px;
   --lg: 18px;
   /*New palette colors*/
+  --background-color: #EDEDED;
+  --letter-color: #1C1D20; 
   --color-principal:rgb(35,34,45);
   --color-secundary: rgb(28,41,23);
   --color-white-254: rgb(255,255,254);
@@ -28,8 +30,9 @@ nav {
   display: flex;
   justify-content: space-between;
   padding: 0 24px;
-  background-color: var(--color-principal);
-  border-bottom: 2px solid var(--color-red);
+  background-color: var(--background-color);
+  color: var(--letter-color);
+  border-bottom: 2px solid #222ABF;
 }
 .menu {
   display: none;
@@ -57,8 +60,8 @@ nav {
 .navbar-left ul li a,
 .navbar-right ul li a {
   text-decoration: none;
-  color: var(--very-light-pink);
-  border: 1px solid var(--white);
+  color: var(--letter-color);
+  border: 1px solid #4750ffb2;
   padding: 8px;
   border-radius: 8px;
 }
