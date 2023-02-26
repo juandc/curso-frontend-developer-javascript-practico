@@ -18,12 +18,6 @@ function toggleDesktopMenu() {
     }
 
     desktopMenu.classList.toggle('inactive')
-
-    desktopMenu.addEventListener('mouseout', mouseDesktopMenu);
-}
-
-function mouseDesktopMenu() {
-    desktopMenu.classList.toggle('inactive')
 }
 
 function toggleHamMenu() {
@@ -33,11 +27,6 @@ function toggleHamMenu() {
         aside.classList.add('inactive')
     }
 
-    mobileMenu.classList.toggle('inactive')
-
-    mobileMenu.addEventListener('mouseout', mouseoutHamMenu);
-}
-function mouseoutHamMenu() {
     mobileMenu.classList.toggle('inactive')
 }
 
@@ -51,12 +40,6 @@ function toggleCarritoAside() {
         desktopMenu.classList.add('inactive')
     }
 
-    aside.classList.toggle('inactive')
-
-    /*     aside.addEventListener('mouseout', mouseoutCarritoIcon); */
-}
-
-function mouseoutCarritoIcon() {
     aside.classList.toggle('inactive')
 }
 
