@@ -126,6 +126,7 @@ nav {
     background-color: var(--white);
     border: 1px solid var(--very-light-pink);
     border-radius: 10px;
+    z-index: 3;
 
   }
   .mobile-menu a {
@@ -283,6 +284,7 @@ nav {
   padding-bottom: 24px;
   position: absolute;
   right: 0;
+  top: 60px;
 }
 #product-info-close {
   background: var(--white);
