@@ -79,12 +79,12 @@ const productList = [];
 productList.push({
     name: 'Celular',
     price: '1.600.000',
-    image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+    image: 'https://images.pexels.com/photos/887751/pexels-photo-887751.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
 });
 productList.push({
-    name: 'Pantalla',
+    name: 'Tv 60 pulgadas',
     price: '800.000',
-    image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+    image: 'https://images.pexels.com/photos/1571458/pexels-photo-1571458.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
 });
 productList.push({
     name: 'Bike',
@@ -92,19 +92,19 @@ productList.push({
     image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
 });
 productList.push({
-    name: 'Celular',
-    price: '1.600.000',
-    image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+    name: 'Alexa',
+    price: '630.000',
+    image: 'https://images.pexels.com/photos/4790267/pexels-photo-4790267.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
 });
 productList.push({
-    name: 'Pantalla',
-    price: '800.000',
-    image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+    name: 'Setup gamer',
+    price: '28.000.000',
+    image: 'https://images.pexels.com/photos/7238759/pexels-photo-7238759.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
 });
 productList.push({
-    name: 'Bike',
-    price: '300.000',
-    image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+    name: 'Ropa al por mayor',
+    price: '1.000.000',
+    image: 'https://media.istockphoto.com/id/1464365204/es/foto/la-ropa-de-moda-cuelga-de-una-percha.jpg?s=612x612&w=is&k=20&c=sdZNP9YK1Yhcw0iVuD6Gvvpqh5yEGmamTcx__DJaJsY='
 });
 
 function renderProducts(arr){
