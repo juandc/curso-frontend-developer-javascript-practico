@@ -2,17 +2,29 @@ const menuEmail = document.querySelector (".navbar-email");
 const desktopMenu = document.querySelector(".desktop-menu");
 const mobileMenu = document.querySelector(".mobile-menu");
 const iconeMobileMenu = document.querySelector(".menu");
+/** el carrito a renderiza*/
 const menuCarrito = document.querySelector(".product-detail")
 const menuCarritoIcon = document.querySelector(".navbar-shopping-cart");
 const cardContainer = document.querySelector(".cards-container");
 const productInfo = document.querySelector("#productInfo");
-const productInfoClose = document.querySelector("#product-info-close");
+
+const aside = document.getElementById ("productInfo");
+
+const carrito = []
+
+
+
 
 menuEmail.addEventListener ("click", showDesktopMenu);
 iconeMobileMenu.addEventListener ("click", showMobileMenu);
 menuCarritoIcon.addEventListener ("click", showShoppingMenu);
-productInfoClose.addEventListener ("click", closeProductInfo);
 
+renderProducts (productList);
+renderMyOrder(productList);
+
+const carritoCounter = document.querySelector("#carrito-counter")
+const botonesCategorias = document.querySelectorAll(".boton-categoria");
+ 
 function showDesktopMenu () {
    const isMenuCarritoClosed = menuCarrito.classList.contains("inactive");
 
@@ -63,129 +75,232 @@ function openProductInfo () {
    
    productInfo.classList.remove ("inactive");
 }
-
 function closeProductInfo () {
    productInfo.classList.add ("inactive");
-   
+
 }
 
-const productList = [];
-productList.push ({
-   name: "bike",
-   price: 120,
-   image: "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-});
-
-productList.push ({
-   name: "pantalla",
-   price: 200,
-   image: "https://th.bing.com/th/id/OIP.8r7HumlZNbYSoJwT46SueAHaE8?pid=ImgDet&rs=1",
-});
 
 
-productList.push ({
-   name: "pc",
-   price: 700,
-   image: "https://th.bing.com/th/id/R.654020a8a7e61bd770ffe80b7e191128?rik=WFb149RY2yVWnQ&pid=ImgRaw&r=0",
-});
-
-productList.push ({
-   name: "tv",
-   price: 800,
-   image: "https://th.bing.com/th/id/R.a988390738d846e7f5f8687161e6daaf?rik=YKyzNyl96rL8Aw&pid=ImgRaw&r=0",
-});
-
-productList.push ({
-   name: "tv",
-   price: 50,
-   image: "https://th.bing.com/th/id/R.22d5e53bca43907b8c1852435e9432d3?rik=qWWtlEiosKJByA&riu=http%3a%2f%2fblog.linio.com.mx%2fwp-content%2fuploads%2f2018%2f11%2fhistoria-tv.jpg&ehk=IncbIh19eMJFVZ8y7tSWIdNdVLiiyRc6wf7vv767VMI%3d&risl=&pid=ImgRaw&r=0",
-});
-
-productList.push ({
-   name: "audiculares",
-   price: 100,
-   image: "https://s3-eu-west-3.amazonaws.com/web-magazines/entornos/deployment/mine/wp-content/uploads/2020/01/21145638/cascos1.jpg",
-});
-
-
-productList.push ({
-   name: "audiculares",
-   price: 120,
-   image: "https://th.bing.com/th/id/OIP.87jgObKtw8qi0Ed3TwUHZAHaEU?pid=ImgDet&rs=1",
-});
+const eliminarDelCarrito = (productId) => {
+      const item = carrito.find((product) => product.id === productId);
+      const i = carrito.indexOf(item);
+      carrito.splice(i, 1);
+      carritoCounter.innerHTML =`${carrito.length}`;
+      item.quantity = 1;
+      renderMyOrder();
+}  
 
 
 
-// for of y for in
+function renderMyOrder () {
+   const orderContent = document.querySelector(".my-order-content");
+   orderContent.innerHTML = '';
 
-// for (product of productList) {console.log(product.name)}
+   carrito.forEach ((product) => {
 
-// VM1339:1 bike
-// VM1339:1 pantalla
-// VM1339:1 pc
+      const productContainer = document.createElement("div");
+      const xButton = document.createElement("button");
+      const removeButton = document.createElement("button");
+      const addButton = document.createElement("button");
 
-// for (product in productList) {console.log(product)}
-// VM1363:1 0
-// VM1363:1 1
-// VM1363:1 2
+      xButton.innerHTML= "Delete"
+      addButton.innerHTML = "+"
+      removeButton.innerHTML = "-"
+      
+      const removeQuantity = (productQ) => {
+   
+         if (productQ === 1){
+            callback ();
+         }else{
+            const actualItem = carrito.find((product2) => product2.name === product.name)
 
+            actualItem.quantity--
+         }
+         
+         renderMyOrder();
+      }
+      
+      const addQuantity = () => {
+         const actualItem = carrito.find((product2) => product2.name === product.name)
 
-{/* <div class="product-card">
-<img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-<div class="product-info">
-  <div>
-    <p>$120,00</p>
-    <p>Bike</p>
-  </div>
-  <figure>
-    <img src="./icons/bt_add_to_cart.svg" alt="">
-  </figure>
-</div>
-</div> */}
+         actualItem.quantity++
 
+         renderMyOrder();
+      }
+      
+     
+   
+      const callback2= () => {
+         addQuantity(product.quantity)
+      }
 
+      const callback3= () => {
+         removeQuantity(product.quantity)
+      }
+      
+      xButton.addEventListener("click", callback);
+      removeButton.addEventListener("click", callback3);
+      addButton.addEventListener("click", callback2);
+      xButton.setAttribute("id", "button3");
+      removeButton.setAttribute("id", "button3");
+      addButton.setAttribute("id", "button3");
+      
+      productContainer.innerHTML = `
+      <div class="shopping-cart">
+      <figure>
+        <img src="${product.image}" alt="">
+      </figure>
+      <p>${product.name}</p>
+      <p>${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(product.price)}</p>
+      <p>${product.quantity}</p>
+    </div>
+    `
 
-function renderProducts (arr) {
-   for (product of productList) {
+    orderContent.appendChild(productContainer);
+    productContainer.appendChild(addButton);
+    productContainer.appendChild(removeButton);
+    productContainer.appendChild(xButton);
+    
+    
+   });
+
+   const valorTotal = document.querySelector("#total");
+
+   valorTotal.innerHTML =`${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(carrito.reduce((accumulator, product) => accumulator + product.price * product.quantity, 0))}`
+
+ }
+
+ function renderProducts (arr) {
+   arr.forEach ((product) => {
       const productCard = document.createElement("div");
+
+      const callback = () => {
+         const repeat = carrito.some((repeatProduct) => repeatProduct.id === product.id);
+         if (repeat){
+            carrito.map((prod) => {
+               if(prod.id === product.id){
+                 ++ prod.quantity;
+               } 
+               
+            });
+         } 
+         else {
+            product.addToCart()
+
+         };
+         renderMyOrder();
+         carritoCounter.innerHTML =`${carrito.length}`;
+
+      }
+
+      const addToCartButton = document.createElement('button')
+      addToCartButton.setAttribute("id", "btn-add-to-cart")
+      addToCartButton.innerText = 'add to cart'
+      addToCartButton.addEventListener('click',  callback)
+      
+      productCard.id = product.name
       productCard.classList.add("product-card");
+
+     productCard.innerHTML =
+     `<img src= "${product.image}" id= "${product.id}" class="boton-imagen" onclick= " >
+     <div class="product-info">
+       <div>
+         <p class = "price">${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(product.price)}</p>
+         <p>${product.name}</p>
+       </div>
+     </div>`;
    
-      // product = {name, price, image } = product.image
-      const img = document.createElement("img");
-      img.setAttribute("src", product.image);
-      img.addEventListener("click", openProductInfo);
-   
-      const productInfo = document.createElement("div");
-      productInfo.classList.add("product-info");
-   
-      const productInfoDiv = document.createElement("div");
-   
-      const productPrice = document.createElement("p");
-      productPrice.innerHTML = "$" + product.price;
-   
-      const productName = document.createElement("p")
-      productName.innerHTML = product.name;
-   
-      
-      productInfoDiv.appendChild(productPrice);
-      productInfoDiv.appendChild(productName);
-      
-      const productInfoFigure = document.createElement("figure");
-      const productImgCart = document.createElement("img");
-      productImgCart.setAttribute("src", "./icons/bt_add_to_cart.svg");
-   
-      productInfoFigure.appendChild(productImgCart);
-   
-      productInfo.appendChild(productInfoDiv);
-      productInfo.appendChild(productInfoFigure);
-   
-      productCard.appendChild(img);
-      productCard.appendChild(productInfo);
-   
-      cardContainer.appendChild(productCard);
-   
-   }
+     productCard.appendChild(addToCartButton)
+
+     cardContainer.appendChild (productCard);
+
+   })
+ 
 }
-renderProducts (productList);
+
+
+
+
+
+botonesCategorias.forEach(boton => {
+   boton.addEventListener("click", (e) => {
+      
+      
+      botonesCategorias.forEach(boton => boton.classList.remove("active"))
+      
+      e.currentTarget.classList.add("active");
+      
+      cardContainer.innerHTML = ""
+      
+      if(e.currentTarget.id != "all"){
+      const choosenProduct = productList.filter(product => product.type == e.currentTarget.id);
+      
+      renderProducts (choosenProduct);
+      } else {
+         renderProducts (productList);
+      }
+   })
+})
+
+function renderMyProductInfo (array) {
+
+  
+   array.forEach ((product) => {
+   
+ 
+
+
+      const productInfoContainter = document.createElement("div");
+      productInfoContainter.setAttribute("id", "product-info");
+
+
+   productInfoContainter.innerHTML=`
+         <div id="product-info-close">
+         <img src="./icons/icon_close.png" alt="close">
+         </div>
+        <img src=${product.image} id= "close" >
+        <p>${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(product.price)}</p>
+        <p>${product.name}</p>
+        <p>${product.description}</p>
+        <button class="primary-button-info add-to-cart-button-info" >
+        <img src="./icons/bt_add_to_cart.svg" alt="add to cart">
+        Add to cart
+      </button>
+      `
+      aside.appendChild(productInfoContainter);
+
+   })
+
+ }
+
+ let botonImagen = document.querySelectorAll(".boton-imagen");
+
+  botonImagen.forEach(boton => {
+   boton.addEventListener("click", (e) => {
+      
+      botonImagen.forEach (boton => boton.classList.remove("active"));
+
+      e.currentTarget.classList.add("active");
+
+      aside.innerHTML= ""
+
+      if(e.currentTarget.id){
+         const choosenImg = productList.filter(product => product.id == e.currentTarget.id);
+         
+         openProductInfo ();
+         renderMyProductInfo (choosenImg);
+         
+         const productInfoClose = document.querySelector("#product-info-close");
+         productInfoClose.addEventListener ("click", closeProductInfo);
+
+         
+         }else {
+            console.log("error")
+         }
+
+   })
+  })
+
 
 

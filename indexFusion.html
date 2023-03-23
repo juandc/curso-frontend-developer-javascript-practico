@@ -23,22 +23,22 @@
 
       <ul>
         <li>
-          <a href="/">All</a>
+          <a id="all" class="boton-menu boton-categoria">All</a>
         </li>
         <li>
-          <a href="/">Clothes</a>
+          <a id="clothes" class="boton-menu boton-categoria">Clothes</a>
         </li>
         <li>
-          <a href="/">Electronics</a>
+          <a id="electronics" class="boton-menu boton-categoria">Electronics</a>
         </li>
         <li>
-          <a href="/">Furnitures</a>
+          <a id="furnitures" class="boton-menu boton-categoria">Furnitures</a>
         </li>
         <li>
-          <a href="/">Toys</a>
+          <a id="toys" class="boton-menu boton-categoria">Toys</a>
         </li>
         <li>
-          <a href="/">Others</a>
+          <a id="others" class="boton-menu boton-categoria">Others</a>
         </li>
       </ul>
     </div>
@@ -48,11 +48,10 @@
         <li class="navbar-email">juan@example.com</li>
         <li class="navbar-shopping-cart">
           <img src="./icons/icon_shopping_cart.svg" alt="shopping cart" class="shopping-icon">
-          <div>2</div>
+          <div id="carrito-counter">0</div>
         </li>
       </ul>
     </div>
-
     <div class="desktop-menu inactive">
         <ul>
           <li>
@@ -68,7 +67,6 @@
           </li>
         </ul>
       </div>
-
     <div class="mobile-menu inactive">
         <ul>
           <li>
@@ -112,91 +110,40 @@
           </li>
         </ul>
       </div>
-      
     </nav>
-    
     <aside class="product-detail  inactive" >
       <div class="title-container">
         <img src="./icons/flechita.svg" alt="arrow">
         <p class="title">My order</p>
       </div>
   
-      <div class="my-order-content">
-        <div class="shopping-cart">
-          <figure>
-            <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="bike">
-          </figure>
-          <p>Bike</p>
-          <p>$30,00</p>
-          <img src="./icons/icon_close.png" alt="close">
-        </div>
-  
-        <div class="shopping-cart">
-          <figure>
-            <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="bike">
-          </figure>
-          <p>Bike</p>
-          <p>$30,00</p>
-          <img src="./icons/icon_close.png" alt="close">
-        </div>
-  
-        <div class="shopping-cart">
-          <figure>
-            <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="bike">
-          </figure>
-          <p>Bike</p>
-          <p>$30,00</p>
-          <img src="./icons/icon_close.png" alt="close">
-        </div>
-  
-        <div class="order">
-          <p>
-            <span>Total</span>
-          </p>
-          <p>$560.00</p>
-        </div>
-  
-        <button class="primary-button">
-          Checkout
-        </button>
+      <div class="my-order-content"></div>
+      
+      <div class="order">
+        <p>
+          <span>Total</span>
+        </p>
+        <p id="total">$0</p>
       </div>
+
+      <button class="primary-button">
+        Checkout
+      </button>
     </div>
     </aside>
-
     <section class="main-container">
       <div class="cards-container">
   
-        <!-- <div class="product-card">
-          <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-          <div class="product-info">
-            <div>
-              <p>$120,00</p>
-              <p>Bike</p>
-            </div>
-            <figure>
-              <img src="./icons/bt_add_to_cart.svg" alt="">
-            </figure>
-          </div>
-        </div> -->
+
       </div>
     </section>
 
     <aside class="inactive" id="productInfo">
-      <div id="product-info-close">
-        <img src="./icons/icon_close.png" alt="close">
-      </div>
-      <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="bike">
-      <div id="product-info">
-        <p>$35,00</p>
-        <p>Bike</p>
-        <p>With its practical position, this bike also fulfills a decorative function, add your hall or workspace.</p>
-        <button class="primary-button-info add-to-cart-button-info">
-          <img src="./icons/bt_add_to_cart.svg" alt="add to cart">
-          Add to cart
-        </button>
-      </div>
+
     </aside>
 
 </body>
+<script src="ItemsList.js"></script>
 <script src="scriptFusion.js"></script>
+
 </html>
