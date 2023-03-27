@@ -114,7 +114,7 @@ function renderMyOrder () {
             callback ();
          }else{
             const actualItem = carrito.find((product2) => product2.name === product.name)
-
+            
             actualItem.quantity--
          }
          
@@ -129,7 +129,10 @@ function renderMyOrder () {
          renderMyOrder();
       }
       
-     
+      const callback = () => {
+         eliminarDelCarrito (product.id)
+         
+      }
    
       const callback2= () => {
          addQuantity(product.quantity)
