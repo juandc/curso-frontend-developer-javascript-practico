@@ -68,44 +68,8 @@ function openProductDetailAside(){
 function closeProductDetailAside(){
   productDetailContainer.classList.add('inactive');
 }
-/*Lista de produtos*/ 
-const productList = []
-productList.push({
-  name: 'AMD Radeon RX 6500 XT',
-  price: 203.92,
-  image:
-    './imagenes_derecho_autor/AMD_RX_6500_XT_13.jpg',
-});
-productList.push({
-  name: 'Pantalla ONN 24',
-  price: 600,
-  image:
-    './imagenes_derecho_autor/tv-pantalla-ancha.jpg',
-});
-productList.push({
-  name: 'Diademas inálambricas',
-  price: 1000,
-  image:
-    './imagenes_derecho_autor/diademas.jpg',
-})
-productList.push({
-  name: 'AMD Radeon RX 6500 XT',
-  price: 203.92,
-  image:
-    './imagenes_derecho_autor/AMD_RX_6500_XT_13.jpg',
-});
-productList.push({
-  name: 'Pantalla ONN 24',
-  price: 600,
-  image:
-    './imagenes_derecho_autor/tv-pantalla-ancha.jpg',
-});
-productList.push({
-  name: 'Diademas inálambricas',
-  price: 1000,
-  image:
-    './imagenes_derecho_autor/diademas.jpg',
-})
+
+
 /* <div class="product-card">
 <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
 <div class="product-info">

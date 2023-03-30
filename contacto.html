@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>YardSale: tienda online de cositas breves</title>
+
+  <link rel="stylesheet" href="./styles.css">
+  <!--Fonts:-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <nav>
+    <img src="./icons/icon_menu.svg" alt="menu" class="menu">
+
+    <div class="navbar-left">
+      <img src="./logos/icon_menu.png" alt="logo" width="16px" height="32px" class="logo" >
+
+      
+      <ul>
+        <li>
+          <a href="/">Inicio</a>
+        </li>
+        <li>
+          <a href="hardware.html">Hardware de computador</a>
+        </li>
+        <li>
+          <a href="monitores.html">Monitores</a>
+        </li>
+        <li>
+          <a href="auriculares.html">Auriculares</a>
+        </li>
+        <li>
+          <a href="celulares.html">Celulares</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="navbar-right">
+      <ul>
+      <li class="navbar-email" style="display: none;">platzi@example.com</li>
+        <li><a href="/" id="login-button">Login</a></li>
+        <li class="navbar-shopping-cart">
+          <img src="./icons/icon_shopping_cart.svg" alt="shopping cart">
+          <div>2</div>
+        </li>
+      </ul>
+    </div>
+    <div class="desktop-menu inactive">
+      <ul>
+        <li>
+          <a href="/" class="title">My orders</a>
+        </li>
+  
+        <li>
+          <a href="/">My account</a>
+        </li>
+  
+        <li>
+          <a href="/">Sign out</a>
+        </li>
+      </ul>
+    </div>
+    <div class="mobile-menu inactive">
+      
+      <ul>
+        <li>
+          <a href="/">Inicio</a>
+        </li>
+        <li>
+          <a href="./sections/hardware.html">Hardware de computador</a>
+        </li>
+        <li>
+          <a href="./sections/monitores.html">Monitores</a>
+        </li>
+        <li>
+          <a href="./sections/auriculares.html">Auriculares</a>
+        </li>
+        <li>
+          <a href="./sections/celulares.html">Celulares</a>
+        </li>
+      </ul>
+  
+      <ul style="display: none;">
+        <li>
+          <a href="/">My orders</a>
+        </li>
+        <li>
+          <a href="/">My account</a>
+        </li>
+      </ul>
+  
+      <ul style="display: none;">
+        <li>
+          <a href="/" class="email">platzi@example.com</a>
+        </li>
+        <li>
+          <a href="/" class="sign-out">Sign out</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <aside class="inactive" id="shoppingCartContainer">
+    <div class="title-container">
+      <img src="./icons/flechita.svg" alt="arrow">
+      <p class="title">My order</p>
+    </div>
+
+    <div class="my-order-content">
+      <div class="shopping-cart">
+        <figure>
+          <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="bike">
+        </figure>
+        <p>Bike</p>
+        <p>$30,00</p>
+        <img src="./icons/icon_close.png" alt="close">
+      </div>
+
+      <div class="shopping-cart">
+        <figure>
+          <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="bike">
+        </figure>
+        <p>Bike</p>
+        <p>$30,00</p>
+        <img src="./icons/icon_close.png" alt="close">
+      </div>
+
+      <div class="shopping-cart">
+        <figure>
+          <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="bike">
+        </figure>
+        <p>Bike</p>
+        <p>$30,00</p>
+        <img src="./icons/icon_close.png" alt="close">
+      </div>
+
+      <div class="order">
+        <p>
+          <span>Total</span>
+        </p>
+        <p>$560.00</p>
+      </div>
+
+      <button class="primary-button">
+        Checkout
+      </button>
+    </div>
+    
+  </div>
+  </aside>
+  <aside id="product-detail" class="inactive">
+    <div class="product-detail-close">
+      <img src="./icons/icon_close.png" alt="close">
+    </div>
+    <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="bike">
+    <div class="product-info">
+      <p>$35,00</p>
+      <p>Bike</p>
+      <p>With its practical position, this bike also fulfills a decorative function, add your hall or workspace.</p>
+      <button class="primary-button add-to-cart-button">
+        <img src="./icons/bt_add_to_cart.svg" alt="add to cart">
+        Add to cart
+      </button>
+    </div>
+  </aside>
+  <section class="main-container">
+    <div class="cards-container">
+    
+    </div>
+  </section>
+  <section class="main-container--contacto">
+    <div>
+        <p>
+            En "Nombre proyecto", creamos un sitio web interactivo que te permite explorar una amplia variedad de productos tecnológicos, sus características y agregarlos fácilmente a tu carrito de compras. Además, puedes crear tu propio usuario e iniciar sesión para realizar compras de manera más rápida y sencilla.
+        </p>
+        <p>  
+            Este desarrollo web se basó en el curso "nombre del curso", donde aprendimos a implementar las funcionalidades básicas del carrito de compras. Sin embargo, como desarrollador web, personalicé el proyecto para añadir funcionalidades más completas, diseñar las secciones y darle un sentido único al proyecto. Utilicé mi experiencia para añadir opciones de registro, bases de datos, y mejorar parcialmente el diseño, entre otras funcionalidades.
+        </p>
+    </div>
+  </section>
+  <script src="main.js"></script>
+</body>
+</html>
