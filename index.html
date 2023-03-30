@@ -4,54 +4,54 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>YardSale: tienda online de cositas breves</title>
 
+  <link rel="stylesheet" href="./styles.css">
+  <!--Fonts:-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="./styles.css">
-
-  <title>YardSale: tienda online de cositas chidas</title>
 </head>
 <body>
+  <!--Nav-->
   <nav>
     <img src="./icons/icon_menu.svg" alt="menu" class="menu">
 
     <div class="navbar-left">
-      <img src="./logos/logo_yard_sale.svg" alt="logo" class="logo">
+      <img src="./logos/icon_menu.png" alt="logo" width="16px" height="32px" class="logo" >
 
+      
       <ul>
         <li>
-          <a href="/">All</a>
+          <a href="/index.html">Inicio</a>
         </li>
         <li>
-          <a href="/">Clothes</a>
+          <a href="hardware.html">Hardware de computador</a>
         </li>
         <li>
-          <a href="/">Electronics</a>
+          <a href="monitores.html">Monitores</a>
         </li>
         <li>
-          <a href="/">Furnitures</a>
+          <a href="auriculares.html">Auriculares</a>
         </li>
         <li>
-          <a href="/">Toys</a>
-        </li>
-        <li>
-          <a href="/">Others</a>
+          <a href="celulares.html">Celulares</a>
         </li>
       </ul>
     </div>
 
     <div class="navbar-right">
       <ul>
-        <li class="navbar-email">platzi@example.com</li>
+      <li class="navbar-email" style="display: none;">platzi@example.com</li>
+        <li><a href="/" id="login-button">Login</a></li>
         <li class="navbar-shopping-cart">
           <img src="./icons/icon_shopping_cart.svg" alt="shopping cart">
           <div>2</div>
         </li>
       </ul>
     </div>
-
     <div class="desktop-menu inactive">
       <ul>
         <li>
@@ -67,33 +67,27 @@
         </li>
       </ul>
     </div>
-
     <div class="mobile-menu inactive">
+      
       <ul>
         <li>
-          <a href="/">CATEGORIES</a>
+          <a href="/index.html">Inicio</a>
         </li>
         <li>
-          <a href="/">All</a>
+          <a href="./sections/hardware.html">Hardware de computador</a>
         </li>
         <li>
-          <a href="/">Clothes</a>
+          <a href="./sections/monitores.html">Monitores</a>
         </li>
         <li>
-          <a href="/">Electronics</a>
+          <a href="./sections/auriculares.html">Auriculares</a>
         </li>
         <li>
-          <a href="/">Furnitures</a>
-        </li>
-        <li>
-          <a href="/">Toys</a>
-        </li>
-        <li>
-          <a href="/">Other</a>
+          <a href="./sections/celulares.html">Celulares</a>
         </li>
       </ul>
   
-      <ul>
+      <ul style="display: none;">
         <li>
           <a href="/">My orders</a>
         </li>
@@ -102,7 +96,7 @@
         </li>
       </ul>
   
-      <ul>
+      <ul style="display: none;">
         <li>
           <a href="/" class="email">platzi@example.com</a>
         </li>
@@ -112,8 +106,8 @@
       </ul>
     </div>
   </nav>
-
-  <aside id="shoppingCartContainer" class="inactive">
+  <!-- carrito de compras -->
+  <aside class="inactive" id="shoppingCartContainer">
     <div class="title-container">
       <img src="./icons/flechita.svg" alt="arrow">
       <p class="title">My order</p>
@@ -158,10 +152,11 @@
         Checkout
       </button>
     </div>
+    
   </div>
   </aside>
-
-  <aside id="productDetail" class="inactive">
+  <!-- Detalle del producto  -->
+  <aside id="product-detail" class="inactive">
     <div class="product-detail-close">
       <img src="./icons/icon_close.png" alt="close">
     </div>
@@ -176,11 +171,11 @@
       </button>
     </div>
   </aside>
-
+  <!-- contenedor principal -->
   <section class="main-container">
     <div class="cards-container">
-
-      <!-- <div class="product-card">
+<!--       
+      <div class="product-card">
         <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
         <div class="product-info">
           <div>
@@ -192,10 +187,13 @@
           </figure>
         </div>
       </div> -->
-
     </div>
   </section>
+  <!-- Scripts -->
+  <script src="productList.js"></script>
+  <script src="main.js"></script>
+ 
 
-  <script src="./main.js"></script>
+
 </body>
 </html>
