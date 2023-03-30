@@ -5,8 +5,12 @@ const $desktopMenu = document.querySelector('.desktop-menu');
 const $burguerMenu = document.querySelector('.menu');
 const $shoppingCar = document.querySelector('.navbar-shopping-cart');
 const $mobileMenu = document.querySelector('.mobile-menu');
+const $productDetailCloseIcon = document.querySelector('.product-detail-close');
 
 const $shoppingCartContainer = document.querySelector('#shoppingCartContainer');
+
+
+const $productDetailContainer = document.querySelector('#productDetail');
 
 const cardsContainer = document.querySelector('.cards-container');
 
@@ -47,6 +51,7 @@ function activeLogin (e) {
 document.addEventListener('click', activeLogin);
 $burguerMenu.addEventListener('click', toogleMobileMenu);
 $shoppingCar.addEventListener('click', toogleCarAside);
+$productDetailCloseIcon.addEventListener('click', closeProductDetailAside)
 
 function toogleMobileMenu () {
 
@@ -55,6 +60,8 @@ function toogleMobileMenu () {
     if (!isAsideClose) {
         $shoppingCartContainer.classList.add('inactive');
     }
+
+    closeProductDetailAside();
 
     $mobileMenu.classList.toggle('inactive');
 
@@ -68,9 +75,29 @@ function toogleCarAside () {
         $mobileMenu.classList.add ('inactive');
     }
 
+    const isProdcutDetailClose = $productDetailContainer.classList.contains('inactive');
+
+    if (!isProdcutDetailClose) {
+        $productDetailContainer.classList.add ('inactive');
+    }
+
     $shoppingCartContainer.classList.toggle('inactive');
 
 };
+
+function openProductDetailAside (){
+
+    $shoppingCartContainer.classList.add('inactive');
+
+    $productDetailContainer.classList.remove('inactive');
+
+};
+
+function  closeProductDetailAside () {
+
+    $productDetailContainer.classList.add('inactive');
+
+}
 
 const productsList = [];
 
@@ -134,7 +161,8 @@ function renderProducts (arr)  {
         productCards.classList.add('product-card');
     
         const imgElement = document.createElement('img');
-        imgElement.setAttribute('src', product.image)
+        imgElement.setAttribute('src', product.image);
+        imgElement.addEventListener('click', openProductDetailAside);
         //product = {name, price, img} -> product.img
     
     

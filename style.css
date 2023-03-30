@@ -335,13 +335,15 @@ aside {
 }
 
 .product-card img:hover {
-  opacity: 0.6;
+  /* opacity: 0.6; */
   cursor: pointer;
-  position: relative; 
+  object-fit: contain;
+  transition: all 0.7ms ease-in;
+  /* position: relative; 
+  z-index: -1; */
 
   /* aca esta el problema del opacity */
 
-  z-index: -1;
 }
 
 .product-card img {
