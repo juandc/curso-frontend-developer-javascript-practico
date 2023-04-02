@@ -36,6 +36,7 @@ function toggleMobileMenu() {
   }
 
   closeProductDetailAside();
+  /* reutilizamos la funcion que cierra el side 2 */
 
   mobileMenu.classList.toggle("inactive");
   /* primero le asignamos una variable a la palabra que pulsaremos (menuHamIcon) despues le asignamos
@@ -66,11 +67,15 @@ function toggleCarritoAside() {
 }
 
 function openProductDetailAside() {
+  /* cerramos el side 1  y podemos hacerlo porque como el open y el close los tenemos separado si fuese togle tendriesemos que poner el condicional ,pero no es el caso y se lo agregamos directamente*/
   shoppingCartContainer.classList.add('inactive');
+    /* removemos la clase que contiene */
   productDetailContainer.classList.remove('inactive');
+
 }
 
 function closeProductDetailAside() {
+  /* le colocamos al side la clase inactive */
   productDetailContainer.classList.add('inactive');
 }
 
@@ -104,7 +109,7 @@ function renderProducts(arr) {
     // product= {name, price, image} -> product.image
     const productImg = document.createElement('img');
     productImg.setAttribute('src', product.image);
-    productImg.addEventListener('click', openProductDetailAside);
+    productImg.addEventListener('click', openProductDetailAside);/* creamos este evento a la imagen porque como no esta en el html y ya la tenemos en js ,podemos hacerlo y asi ejecutar la funcion que nos hara aparecer el side 2 */
   
     const productInfo = document.createElement('div');
     productInfo.classList.add('product-info');
