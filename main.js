@@ -5,20 +5,27 @@ const menuBurger = document.querySelector('.menu');
 const mobileMenu = document.querySelector('.mobile-menu');
 const shoppingCartIcon = document.querySelector('.navbar-shopping-cart');
 const aside = document.querySelector('.product-detail');
-const cardsContainer = document.querySelector('.cards-container')
+const cardsContainer = document.querySelector('.cards-container');
+const productDetail = document.querySelector('.product-detail2');
+const productDetailClose = document.querySelector('.product-detail-close')
 
 /*EVENT LISTENERS*/
 
 menuEmail.addEventListener('click', toggleDesktopMenu);
 menuBurger.addEventListener('click' , toggleMenuMobile);
 shoppingCartIcon.addEventListener('click', toggleAsideCart);
+/*cardsContainer.addEventListener('click', toggleProductDetail);*/ 
+productDetailClose.addEventListener('click', closeProductDetail);
 
 /*FUNCTIONS*/
 
 function toggleDesktopMenu(){
     desktopMenu.classList.toggle('inactive');
     if (!aside.classList.contains('inactive')){
-        aside.classList.add('inactive')
+        aside.classList.add('inactive');
+    }
+    if (!productDetail.classList.contains('inactive')){
+        productDetail.classList.add('inactive')
     }
 }
 
@@ -27,6 +34,7 @@ function toggleMenuMobile(){
     if (!aside.classList.contains('inactive')){
         aside.classList.add('inactive')
     }
+    productDetail.classList.add('inactive');
 }
 
 function toggleAsideCart(){
@@ -38,8 +46,25 @@ function toggleAsideCart(){
     if (!desktopMenu.classList.contains('inactive')){
         desktopMenu.classList.add('inactive')
     }
+    if (!productDetail.classList.contains('inactive')){
+        productDetail.classList.add('inactive')
+    }
+   
 }
 
+function openProductDetail(nombre){
+    productDetail.classList.remove('inactive');
+    if (!aside.classList.contains('inactive')){
+        aside.classList.add('inactive')
+    }
+    if (!desktopMenu.classList.contains('inactive')){
+        desktopMenu.classList.add('inactive')
+    }
+}
+function closeProductDetail(){
+    
+    productDetail.classList.add('inactive');
+}
 const productList = [];
 productList.push({
     name:'bike',
@@ -56,6 +81,9 @@ productList.push({
     price:500,
     image:'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
 });
+
+
+
 /*PRODUCT CARD INSERT*/
 
 
@@ -67,6 +95,8 @@ function renderProducts(arr){
     
         const productImg = document.createElement('img');
         productImg.setAttribute('src', product.image);
+        productImg.addEventListener('click', openProductDetail);
+        
     
         const productInfo = document.createElement('div');
         productInfo.classList.add('product-info');   
@@ -78,7 +108,9 @@ function renderProducts(arr){
     
         const productName = document.createElement('p');
         productName.innerText = product.name;
-    
+        
+        
+
         productInfodiv.appendChild(productPrice);    
         productInfodiv.appendChild(productName);    
     
