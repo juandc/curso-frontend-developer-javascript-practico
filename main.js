@@ -1,119 +1,93 @@
-const menuEmail = document.querySelector('.navbar-email');
-const menuHamIcon = document.querySelector('.menu');
-const menuCarritoIcon = document.querySelector('.navbar-shopping-cart');
-const productDetailCloseIcon = document.querySelector('.product-detail-close')
+const navbarEmail = document.querySelector('.navbar-email');
 const desktopMenu = document.querySelector('.desktop-menu');
+const menuCarrito = document.querySelector('.navbar-shopping-cart');
+const productDetail = document.querySelector('.product-detail');
+const menuHamburguesa = document.querySelector('.menu');
 const mobileMenu = document.querySelector('.mobile-menu');
-const shoppingCartContainer = document.querySelector('#shoppingCartContainer');
-const productDetailContainer = document.querySelector('#productDetail');
 const cardsContainer = document.querySelector('.cards-container');
+const productlist = [];
 
-menuEmail.addEventListener('click', toggleDesktopMenu);
-menuHamIcon.addEventListener('click', toggleMobileMenu);
-menuCarritoIcon.addEventListener('click', toggleCarritoAside);
-productDetailCloseIcon.addEventListener('click', closeProductDetailAside);
 
-function toggleDesktopMenu() {
-  const isAsideClosed = shoppingCartContainer.classList.contains('inactive');
 
-  if (!isAsideClosed) {
-    shoppingCartContainer.classList.add('inactive');
+// MENÚ EMAIL
+
+navbarEmail.addEventListener('click',() =>{
+  const  productDetailInactive =  productDetail.classList.contains('inactive');
+
+  if(!productDetailInactive){
+    productDetail.classList.add('inactive')
   }
-  
+
   desktopMenu.classList.toggle('inactive');
-}
+});
 
-function toggleMobileMenu() {
-  const isAsideClosed = shoppingCartContainer.classList.contains('inactive');
+// MENÚ HAMBURGUESA
 
-  if (!isAsideClosed) {
-    shoppingCartContainer.classList.add('inactive'); 
+menuHamburguesa.addEventListener('click',() =>{
+  const  productDetailInactive =  productDetail.classList.contains('inactive');
+
+  if(!productDetailInactive){
+    productDetail.classList.add('inactive');
   }
-
-  closeProductDetailAside();
+    mobileMenu.classList.toggle('inactive');
   
-  mobileMenu.classList.toggle('inactive');
-}
+});
 
-function toggleCarritoAside() {
-  const isMobileMenuClosed = mobileMenu.classList.contains('inactive');
-  
-  if (!isMobileMenuClosed) {
+// CARRITO COMPRAS
+menuCarrito.addEventListener('click',() =>{
+  const mobileMenuInactive = mobileMenu.classList.contains('inactive');
+  const desktopMenuInactive = desktopMenu.classList.contains('inactive');
+  if(!mobileMenuInactive || !desktopMenuInactive ){
     mobileMenu.classList.add('inactive');
+    desktopMenu.classList.add('inactive');
   }
 
-  const isProductDetailClosed = productDetailContainer.classList.contains('inactive');
-  
-  if (!isProductDetailClosed) {
-    productDetailContainer.classList.add('inactive'); 
-  }
-  
-  shoppingCartContainer.classList.toggle('inactive');
-}
+    productDetail.classList.toggle('inactive')
 
-function openProductDetailAside() {
-  shoppingCartContainer.classList.add('inactive');
-  productDetailContainer.classList.remove('inactive');
-}
 
-function closeProductDetailAside() {
-  productDetailContainer.classList.add('inactive');
-}
-
-const productList = [];
-productList.push({
-  name: 'Bike',
-  price: 120,
-  image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-});
-productList.push({
-  name: 'Pantalla',
-  price: 220,
-  image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-});
-productList.push({
-  name: 'Compu',
-  price: 620,
-  image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
 });
 
-function renderProducts(arr) {
-  for (product of arr) {
+// PRODUCTOS DEL ARRAY PRODUCLIST (Lista)
+
+productlist.push({name:'Bike',precio:120,imagen:'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'});
+productlist.push({name:'Patines',precio:90,imagen:'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'});
+productlist.push({name:'Patineta',precio:620,imagen:'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'});
+productlist.push({name:'Patineta',precio:620,imagen:'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'});
+
+
+  // FUNCION RECORRE EL PRODUCTLIST Y CREA LOS PRODUCTOS EN EL DOM
+function ImprimirProductosDOM (listaProductos){
+  listaProductos.forEach(product =>{
+
+    // MAQUETACION DEL HTML EN JS
     const productCard = document.createElement('div');
     productCard.classList.add('product-card');
   
-    // product= {name, price, image} -> product.image
-    const productImg = document.createElement('img');
-    productImg.setAttribute('src', product.image);
-    productImg.addEventListener('click', openProductDetailAside);
+    const img =document.createElement('img');
+    img.setAttribute('src',product.imagen);
   
     const productInfo = document.createElement('div');
     productInfo.classList.add('product-info');
   
-    const productInfoDiv = document.createElement('div');
+    const productInfoDiv= document.createElement('div');
   
-    const productPrice = document.createElement('p');
-    productPrice.innerText = '$' + product.price;
+    const precio = document.createElement('p');
+    precio.innerText = `$ ${product.precio}`;
+  
     const productName = document.createElement('p');
-    productName.innerText = product.name;
+    productName.innerText = `${product.name}`;
+   
+     const productFigure = document.createElement('figure');
+    
+    const productFigureImg = document.createElement('img');
+    productFigureImg.setAttribute('src','/github-proyectos/frontend-js-practico/icons/bt_add_to_cart.svg');
   
-    productInfoDiv.appendChild(productPrice);
-    productInfoDiv.appendChild(productName);
-  
-    const productInfoFigure = document.createElement('figure');
-    const productImgCart = document.createElement('img');
-    productImgCart.setAttribute('src', './icons/bt_add_to_cart.svg');
-  
-    productInfoFigure.appendChild(productImgCart);
-  
-    productInfo.appendChild(productInfoDiv);
-    productInfo.appendChild(productInfoFigure);
-  
-    productCard.appendChild(productImg);
-    productCard.appendChild(productInfo);
-  
-    cardsContainer.appendChild(productCard);
-  }
+    productFigure.append(productFigureImg);
+    productInfoDiv.append(precio,productName);
+    productInfo.append(productInfoDiv, productFigure);
+    productCard.append(img,productInfo);
+    cardsContainer.append(productCard);
+ })
 }
 
-renderProducts(productList);
+ImprimirProductosDOM(productlist);
