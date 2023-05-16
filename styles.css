@@ -157,10 +157,11 @@
   }
 
   /*Aside (product detail y carrito)*/
-  
+
   .product-detail {
     width: 360px;
-    padding: 24px;
+    background-color: var(--white);
+    padding: 0 24px;
     box-sizing: border-box;
     position: absolute;
     right: 0;
