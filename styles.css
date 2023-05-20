@@ -1,24 +1,24 @@
-/* General */
+/* Generales */
+
 :root {
-  --white: #FFFFFF;
+  --white: #ffffff;
   --black: #000000;
-  --very-light-pink: #C7C7C7;
-  --text-input-field: #F7F7F7;
-  --hospital-green: #ACD9B2;
+  --very-light-pink: #c7c7c7;
+  --text-input-field: #f7f7f7;
+  --hospital-green: #acd9b2;
   --sm: 14px;
   --md: 16px;
   --lg: 18px;
 }
 body {
   margin: 0;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
 }
+
 .inactive {
   display: none;
 }
 
-
-/* Navbar (general) */
 nav {
   display: flex;
   justify-content: space-between;
@@ -61,12 +61,13 @@ nav {
 }
 .navbar-email {
   color: var(--very-light-pink);
-  cursor: pointer;
   font-size: var(--sm);
   margin-right: 12px;
+  cursor: pointer;
 }
 .navbar-shopping-cart {
   position: relative;
+  cursor: pointer;
 }
 .navbar-shopping-cart div {
   width: 16px;
@@ -83,7 +84,6 @@ nav {
   align-items: center;
 }
 
-/* Menu en desktop */
 .desktop-menu {
   position: absolute;
   top: 60px;
@@ -122,14 +122,13 @@ nav {
   display: inline-block;
 }
 
-/* Menu en mobile */
 .mobile-menu {
   background-color: var(--white);
   position: absolute;
   top: 60px;
+  padding: 24px;
   left: 0;
   width: 100%;
-  padding: 24px;
 }
 .mobile-menu a {
   text-decoration: none;
@@ -157,8 +156,8 @@ nav {
   color: var(--hospital-green) !important;
 }
 
+/* aside product detil */
 
-/* Aside (product detail y carrito) */
 aside {
   background-color: var(--white);
   width: 360px;
@@ -167,7 +166,6 @@ aside {
   right: 0;
 }
 
-/* ShoppingCart */
 #shoppingCartContainer {
   padding: 0 24px;
 }
@@ -178,6 +176,8 @@ aside {
   transform: rotate(180deg);
   margin-right: 14px;
 }
+
+
 .title {
   font-size: var(--lg);
   font-weight: bold;
@@ -239,7 +239,6 @@ aside {
   height: 50px;
 }
 
-/* ProductDetail */
 .product-detail-close {
   background: var(--white);
   width: 14px;
@@ -251,6 +250,7 @@ aside {
   padding: 12px;
   border-radius: 50%;
 }
+
 .product-detail-close:hover {
   cursor: pointer;
 }
@@ -298,14 +298,14 @@ aside {
   justify-content: center;
 }
 
+/* product list */
 
-/* Product List */
 .cards-container {
+  margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(auto-fill, 240px);
   gap: 26px;
   place-content: center;
-  margin-top: 20px;
 }
 .product-card {
   width: 240px;
@@ -342,7 +342,6 @@ aside {
   color: var(--very-light-pink);
 }
 
-
 @media (max-width: 640px) {
   .menu {
     display: block;
@@ -356,11 +355,9 @@ aside {
   .desktop-menu {
     display: none;
   }
-
   aside {
     width: 100%;
   }
-
   .cards-container {
     grid-template-columns: repeat(auto-fill, 140px);
   }

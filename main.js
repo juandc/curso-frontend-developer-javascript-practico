@@ -1,8 +1,8 @@
 const menuEmail = document.querySelector('.navbar-email');
+const desktopMenu = document.querySelector('.desktop-menu');
 const menuHamIcon = document.querySelector('.menu');
 const menuCarritoIcon = document.querySelector('.navbar-shopping-cart');
-const productDetailCloseIcon = document.querySelector('.product-detail-close')
-const desktopMenu = document.querySelector('.desktop-menu');
+const productDetailCloseIcon = document.querySelector('.product-detail-close');
 const mobileMenu = document.querySelector('.mobile-menu');
 const shoppingCartContainer = document.querySelector('#shoppingCartContainer');
 const productDetailContainer = document.querySelector('#productDetail');
@@ -13,46 +13,54 @@ menuHamIcon.addEventListener('click', toggleMobileMenu);
 menuCarritoIcon.addEventListener('click', toggleCarritoAside);
 productDetailCloseIcon.addEventListener('click', closeProductDetailAside);
 
-function toggleDesktopMenu() {
+function toggleDesktopMenu(){
   const isAsideClosed = shoppingCartContainer.classList.contains('inactive');
-
-  if (!isAsideClosed) {
+  
+  if (!isAsideClosed){
     shoppingCartContainer.classList.add('inactive');
   }
-  
+
   desktopMenu.classList.toggle('inactive');
 }
 
-function toggleMobileMenu() {
+function toggleMobileMenu(){
   const isAsideClosed = shoppingCartContainer.classList.contains('inactive');
-
-  if (!isAsideClosed) {
-    shoppingCartContainer.classList.add('inactive'); 
+  
+  if (!isAsideClosed){
+    shoppingCartContainer.classList.add('inactive');
   }
 
+  //en mobile, si se quiere abrir el menu lateral izquierdo hay que cerrar cualquier otro elemento que esté activo.
   closeProductDetailAside();
-  
+
   mobileMenu.classList.toggle('inactive');
 }
 
-function toggleCarritoAside() {
+function toggleCarritoAside(){
   const isMobileMenuClosed = mobileMenu.classList.contains('inactive');
+  const isDesktopMenuClosed = desktopMenu.classList.contains('inactive');
+
+  if (!isDesktopMenuClosed){
+    desktopMenu.classList.add('inactive');
+  }
   
-  if (!isMobileMenuClosed) {
+  if (!isMobileMenuClosed){
     mobileMenu.classList.add('inactive');
   }
 
   const isProductDetailClosed = productDetailContainer.classList.contains('inactive');
-  
+
   if (!isProductDetailClosed) {
-    productDetailContainer.classList.add('inactive'); 
+    productDetailContainer.classList.add('inactive');
   }
-  
+
   shoppingCartContainer.classList.toggle('inactive');
+
 }
 
 function openProductDetailAside() {
   shoppingCartContainer.classList.add('inactive');
+
   productDetailContainer.classList.remove('inactive');
 }
 
@@ -61,28 +69,30 @@ function closeProductDetailAside() {
 }
 
 const productList = [];
+
 productList.push({
   name: 'Bike',
   price: 120,
-  image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-});
-productList.push({
-  name: 'Pantalla',
-  price: 220,
-  image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-});
-productList.push({
-  name: 'Compu',
-  price: 620,
-  image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+  image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"'
 });
 
-function renderProducts(arr) {
+productList.push({
+  name: 'Pantalla',
+  price: 200,
+  image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"'
+});
+
+productList.push({
+  name: 'Computador',
+  price: 420,
+  image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"'
+});
+
+function renderProducts(arr){
   for (product of arr) {
-    const productCard = document.createElement('div');
+    const productCard = document.createElement('div')
     productCard.classList.add('product-card');
   
-    // product= {name, price, image} -> product.image
     const productImg = document.createElement('img');
     productImg.setAttribute('src', product.image);
     productImg.addEventListener('click', openProductDetailAside);
@@ -92,9 +102,10 @@ function renderProducts(arr) {
   
     const productInfoDiv = document.createElement('div');
   
-    const productPrice = document.createElement('p');
+    const productPrice = document.createElement('p')
     productPrice.innerText = '$' + product.price;
-    const productName = document.createElement('p');
+  
+    const productName = document.createElement('p')
     productName.innerText = product.name;
   
     productInfoDiv.appendChild(productPrice);
@@ -114,6 +125,7 @@ function renderProducts(arr) {
   
     cardsContainer.appendChild(productCard);
   }
+  
 }
 
 renderProducts(productList);
