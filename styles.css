@@ -1,4 +1,5 @@
 /* General */
+/* Root contiene varias variables de css */
 :root {
   --white: #FFFFFF;
   --black: #000000;
@@ -13,9 +14,15 @@ body {
   margin: 0;
   font-family: 'Quicksand', sans-serif;
 }
+
+/* clase inactive nos permite desativar estructuras de html */
 .inactive {
   display: none;
 }
+
+
+
+
 
 
 /* Navbar (general) */
@@ -122,14 +129,16 @@ nav {
   display: inline-block;
 }
 
-/* Menu en mobile */
+
+
+/* Menu en Mobile */
 .mobile-menu {
   background-color: var(--white);
   position: absolute;
   top: 60px;
+  padding: 24px;
   left: 0;
   width: 100%;
-  padding: 24px;
 }
 .mobile-menu a {
   text-decoration: none;
@@ -158,7 +167,9 @@ nav {
 }
 
 
-/* Aside (product detail y carrito) */
+
+
+/* aside (product detail y carrito) */
 aside {
   background-color: var(--white);
   width: 360px;
@@ -167,10 +178,15 @@ aside {
   right: 0;
 }
 
-/* ShoppingCart */
-#shoppingCartContainer {
+
+
+
+
+/* ShopingCart */
+#shopingCartContainer {
   padding: 0 24px;
 }
+
 .title-container {
   display: flex;
 }
@@ -239,6 +255,7 @@ aside {
   height: 50px;
 }
 
+
 /* ProductDetail */
 .product-detail-close {
   background: var(--white);
@@ -260,6 +277,10 @@ aside {
   object-fit: cover;
   border-radius: 0 0 20px 20px;
 }
+
+/* De esta forma podemmos decir que las diferntes clases producto info solo se apliquen
+a product detail, ya que en otras clases tabien utilizamos product info con diferentes parametros
+y se realiza coincidencias o doble llamada de clases product info lo que resulta en colisiones*/
 #productDetail .product-info {
   margin: 24px 24px 0 24px;
 }
@@ -299,7 +320,8 @@ aside {
 }
 
 
-/* Product List */
+
+/* lista de productos - product list */
 .cards-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, 240px);
@@ -343,6 +365,30 @@ aside {
 }
 
 
+
+
+/* 
+@media (max-width: 640px): Esta regla se aplica cuando el ancho de la pantalla es como máximo 640 píxeles.
+
+.menu, .navbar-left ul, .navbar-email, .desktop-menu: Estas clases tienen estilos que afectan a diferentes elementos 
+de la interfaz cuando la pantalla es pequeña (640 píxeles o menos). En este caso, se utilizan para ocultar o mostrar
+elementos en función del tamaño de la pantalla. Por ejemplo, .menu se muestra como un bloque (display: block) y 
+.desktop-menu se oculta (display: none).
+
+aside: Esta regla afecta al elemento <aside> y establece su ancho al 100% de la pantalla cuando la pantalla es pequeña.
+
+.cards-container, .product-card, .product-card img: Estas clases tienen estilos que ajustan el diseño de los 
+contenedores y las imágenes de los productos cuando la pantalla es pequeña. Por ejemplo, .cards-container utiliza 
+la propiedad grid-template-columns para definir columnas automáticas de 140 píxeles de ancho (repeat(auto-fill, 140px)), 
+y .product-card img establece el ancho y alto de las imágenes a 140 píxeles.
+
+@media (min-width: 641px): Esta regla se aplica cuando el ancho de la pantalla es al menos 641 píxeles.
+
+.mobile-menu: Esta clase tiene un estilo que oculta el menú móvil cuando la pantalla 
+es lo suficientemente grande (641 píxeles o más).
+*/
+
+
 @media (max-width: 640px) {
   .menu {
     display: block;
@@ -355,6 +401,10 @@ aside {
   }
   .desktop-menu {
     display: none;
+  }
+
+  .product-detail {
+    width: 100%;
   }
 
   aside {
@@ -376,5 +426,18 @@ aside {
 @media (min-width: 641px) {
   .mobile-menu {
     display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .cards-container {
+    grid-template-columns: repeat(auto-fill, 140px);
+  }
+  .product-card {
+    width: 140px;
+  }
+  .product-card img {
+    width: 140px;
+    height: 140px;
   }
 }
