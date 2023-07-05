@@ -3,12 +3,12 @@ const desktopMenu = document.querySelector ('.desktop-menu')
 const burguerMenu = document.querySelector ('.menu')
 const mobileMenu = document.querySelector ('.mobile-menu')
 const menuCarritoIcon = document.querySelector ('.navbar-shopping-cart')
-const aside = document.querySelector ('.product-detail')
+const shoppinCartContainer = document.querySelector ('#shoppinCartContainer')
 const cardsContainer = document.querySelector ('.cards-container')
 
 menuEmail.addEventListener('click', toggleDesktopMenu);
 burguerMenu.addEventListener('click', toggleMobileMenu);
-menuCarritoIcon.addEventListener('click', toggleCarritoAside)
+menuCarritoIcon.addEventListener('click', toggleCarritoShoppinCartContainer)
 
 function toggleDesktopMenu (){
  desktopMenu.classList.toggle('inactive');
@@ -18,8 +18,8 @@ function toggleMobileMenu (){
     mobileMenu.classList.toggle('inactive');
    }
 
-function toggleCarritoAside () {
-    aside.classList.toggle('inactive');
+function toggleCarritoShoppinCartContainer () {
+    shoppinCartContainer.classList.toggle('inactive');
 }
 
 const productList = [];
