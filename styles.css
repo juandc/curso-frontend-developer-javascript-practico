@@ -177,7 +177,7 @@
       width: 380px;
       box-sizing: border-box;
       position: absolute;
-      right: 0;
+      right: 10px;
       background-color: var(--white);
     }
 
