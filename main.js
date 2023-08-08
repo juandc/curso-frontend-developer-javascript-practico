@@ -5,6 +5,8 @@ const mobileMenu = document.querySelector('.mobile-menu');
 const menuCart = document.querySelector('.navbar-shopping-cart');
 const aside = document.querySelector('.product-detail');
 const cardsContainer = document.querySelector('.cards-container');
+const productCartDetail = document.querySelector('.product-cart-detail');
+const btnCloseProductCartDetail = document.querySelector('.product-detail-close');
 
 
 menuEmail.addEventListener('click', toggleDesktop);
@@ -17,6 +19,7 @@ function toggleDesktop() {
 
 function toggleMobile() {
   const isAsideOpen = aside.classList.contains('inactive');
+  productCartDetail.classList.add('inactive');
   
   if(!isAsideOpen){
     aside.classList.add('inactive');
@@ -26,14 +29,34 @@ function toggleMobile() {
 
 function toggleAside() {
   const isMobileMenuOpen = mobileMenu.classList.contains('inactive');
+  const isProductDetailOpen = productCartDetail.classList.contains('inactive');
 
-  
   if(!isMobileMenuOpen){
     mobileMenu.classList.add('inactive');
   }
+  if(!isProductDetailOpen){
+    productCartDetail.classList.add('inactive');
+  }
+
+  
   
   aside.classList.toggle('inactive');
 }
+
+
+function openProductDetail(){
+  aside.classList.add('inactive');
+  productCartDetail.classList.remove('inactive');
+}
+
+function closeProductDetail(){
+  productCartDetail.classList.add('inactive');
+}
+
+btnCloseProductCartDetail.addEventListener('click', closeProductDetail);
+
+
+
 
 const productList = [];
 
@@ -58,18 +81,6 @@ productList.push({
 
 })
 
-/* <div class="product-card">
-        <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-        <div class="product-info">
-          <div>
-            <p>$120,00</p>
-            <p>Bike</p>
-          </div>
-          <figure>
-            <img src="./icons/bt_add_to_cart.svg" alt="">
-          </figure>
-        </div>
-</div> */
 
 
 for (product of productList){
@@ -77,7 +88,8 @@ for (product of productList){
   productCard.setAttribute('class', 'product-card');
 
   const imageProduct = document.createElement('img');
-  imageProduct.setAttribute('src', product.image)
+  imageProduct.setAttribute('src', product.image);
+  imageProduct.addEventListener('click', openProductDetail);
 
   const infoProduct = document.createElement('div');
   infoProduct.setAttribute('class', 'product-info');
