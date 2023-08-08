@@ -102,12 +102,5 @@ for (product of productList){
   divPrecio.append(pPrecio);
   divPrecio.append(pNombre);
   figCart.append(imgCart);
-
-
-
-
-
-
-
 }
 
