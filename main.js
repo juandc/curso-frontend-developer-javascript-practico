@@ -86,14 +86,14 @@ productList.push({
   image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
 });
 productList.push({
-  name: 'Pantalla',
+  name: 'Monitor',
   price: 220,
-  image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+  image: 'https://i.blogs.es/19315c/mejores-monitores-gaming/1366_2000.jpeg',
 });
 productList.push({
-  name: 'Compu',
+  name: 'Notebook',
   price: 620,
-  image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+  image: 'https://www.itsitio.com/wp-content/uploads/2019/01/ITSitio_Asus_Rog_Notebooks.jpg',
 });
 
 function renderProducts(arr) {
