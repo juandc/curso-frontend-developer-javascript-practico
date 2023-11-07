@@ -46,24 +46,41 @@ const productList = generateProducts(nameProductList, priceProductList, imagePro
 // * FUNCIONES
 
 function documentCreateHTMLProducts(){
-  let htmlTags = ""
-  for( product of productList){
-    htmlTags += `
-    <div class="product-card">
-      <img src="${product.image}" alt="${product.name}">
-      <div class="product-info">
-        <div>
-          <p>$ ${product.price}</p>
-          <p>${product.name}</p>
-        </div>
-        <figure>
-          <img src="./icons/bt_add_to_cart.svg" alt="Recurso no encontrado">
-        </figure>
-      </div>
-    </div>
-    `
+
+  for(product of productList){
+    let divProductCard = document.createElement("div")
+    divProductCard.setAttribute("class", "product-card")
+    
+    let imgProduct = document.createElement("img")
+    imgProduct.setAttribute("src", product.image)
+    imgProduct.setAttribute("alt", "Imagen del producto no encontrado")
+    
+    let divProductInfo = document.createElement("div")
+    divProductInfo.setAttribute("class", "product-info")
+    
+    let divPriceName = document.createElement("div")
+    
+    let pPrice, pName
+    pPrice = document.createElement("p")
+    pName = document.createElement("p")
+    pPrice.innerText = product.price
+    pName.innerText = product.name
+
+    let figureProduct = document.createElement("figure")
+    
+    let iconProduct = document.createElement("img")
+    iconProduct.setAttribute("src", "./icons/bt_add_to_cart.svg")
+    iconProduct.setAttribute("alt", "Icono de comprar no encontrado")
+    
+    divPriceName.append(pPrice, pName)
+    figureProduct.appendChild(iconProduct)
+
+    divProductInfo.append(divPriceName, figureProduct)
+
+    divProductCard.append(imgProduct, divProductInfo)
+    
+    cardContainer.appendChild(divProductCard)
   }
-  cardContainer.innerHTML = htmlTags
 }
 
 
