@@ -4,13 +4,69 @@ const barMenu = document.querySelector(".menu")
 const menuMobile = document.querySelector(".mobile-menu")
 const carButton = document.querySelector(".navbar-shopping-cart")
 const shoppingCart = document.querySelector(".product-detail")
+const cardContainer = document.querySelector(".cards-container")
 
-console.log(desktopMenu.classList.contains("active") )
+const nameProductList = ["Laptop", "Celular", "Bike", "Pescera", "El Psicoanalista - Libro"]
+const priceProductList = [2100, 900, 120, 50, 10]
+const imageProductList = [
+  "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
 
+  "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
 
+  "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  
+  "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+
+  "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+]
+
+function products(name, price, image){
+  this.name = name
+  this.price = price
+  this.image = image
+}
+
+function generateProducts( name, price, image){
+  const items = []
+  for(let i=0; i < name.length; i++){
+    let newProduct
+    newProduct = new products(name[i], price[i], image[i])
+    items.push(newProduct)
+  }
+  return items
+}
+
+const productList = generateProducts(nameProductList, priceProductList, imageProductList)
+
+/**
+ * Permite agregar los productos al HTML
+*/
 
 
 // * FUNCIONES
+
+function documentCreateHTMLProducts(){
+  let htmlTags = ""
+  for( product of productList){
+    htmlTags += `
+    <div class="product-card">
+      <img src="${product.image}" alt="${product.name}">
+      <div class="product-info">
+        <div>
+          <p>$ ${product.price}</p>
+          <p>${product.name}</p>
+        </div>
+        <figure>
+          <img src="./icons/bt_add_to_cart.svg" alt="Recurso no encontrado">
+        </figure>
+      </div>
+    </div>
+    `
+  }
+  cardContainer.innerHTML = htmlTags
+}
+
+
 function toggleElement(selectorElement, className){
   let tagHTML;
   tagHTML = document.querySelector(selectorElement)
@@ -37,8 +93,11 @@ function optimizarVisualizacionMenus(classMenu1, classMenu2, classElement){
 
 
 // * EVENTOS
+
 document.addEventListener("DOMContentLoaded", () =>{
   console.log("El documento esta listo para ser manipulado")
+  // GENERAR LA LISTA DE PRODUCTOS
+  documentCreateHTMLProducts()
 })
 window.addEventListener("resize", ()=>{
   const anchoVentana = window.innerWidth
@@ -75,5 +134,3 @@ carButton.addEventListener("click", (e) => {
     optimizarVisualizacionMenus(".product-detail", ".mobile-menu", "active")
   }
 })
-
-
