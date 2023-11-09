@@ -46,7 +46,7 @@ const productList = generateProducts(nameProductList, priceProductList, imagePro
 // * FUNCIONES
 
 function documentCreateHTMLProducts(){
-
+  // Creando y agregando elementos al DOM
   for(product of productList){
     let divProductCard = document.createElement("div")
     divProductCard.setAttribute("class", "product-card")
