@@ -311,6 +311,7 @@ nav {
     height: 240px;
     border-radius: 20px;
     object-fit: cover;
+    cursor: pointer;
 }
 .product-info {
     display: flex;
@@ -356,7 +357,7 @@ nav {
 */
 
 .product-detail-store {
-    /* display: none; */
+    display: none;
     width: 360px;
     padding-bottom: 24px;
     position: absolute;
@@ -367,7 +368,7 @@ nav {
     display: block
 }
 .product-detail-close {
-    background: var(--white);
+    background: #fff;
     width: 14px;
     height: 14px;
     position: absolute;
@@ -376,6 +377,10 @@ nav {
     z-index: 2;
     padding: 12px;
     border-radius: 50%;
+    display: flex;
+    justify-content: center;
+}
+.product-detail-close img{
 }
 .product-detail-close:hover {
     cursor: pointer;

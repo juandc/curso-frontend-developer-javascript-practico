@@ -45,6 +45,9 @@ const productList = generateProducts(nameProductList, priceProductList, imagePro
 
 
 // * FUNCIONES
+function openProductDetail(){
+  productDetailStore.classList.add('active')
+}
 
 function documentCreateHTMLProducts(){
   // Creando y agregando elementos al DOM
@@ -55,6 +58,8 @@ function documentCreateHTMLProducts(){
     let imgProduct = document.createElement("img")
     imgProduct.setAttribute("src", product.image)
     imgProduct.setAttribute("alt", "Imagen del producto no encontrado")
+    // Agregando un evento a la imagen
+    imgProduct.addEventListener('click', openProductDetail)
     
     let divProductInfo = document.createElement("div")
     divProductInfo.setAttribute("class", "product-info")
