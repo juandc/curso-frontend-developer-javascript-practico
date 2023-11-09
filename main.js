@@ -5,6 +5,7 @@ const menuMobile = document.querySelector(".mobile-menu")
 const carButton = document.querySelector(".navbar-shopping-cart")
 const shoppingCart = document.querySelector(".product-detail")
 const cardContainer = document.querySelector(".cards-container")
+const productDetailStore = document.querySelector("#productDetailStore")
 
 const nameProductList = ["Laptop", "Celular", "Bike", "Pescera", "El Psicoanalista - Libro"]
 const priceProductList = [2100, 900, 120, 50, 10]
