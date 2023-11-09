@@ -368,17 +368,18 @@ nav {
     display: block
 }
 .product-detail-close {
+    --circle: 3rem;
     background: #fff;
-    width: 14px;
-    height: 14px;
+    width: var(--circle);
+    height: var(--circle);
     position: absolute;
     top: 24px;
     left: 24px;
     z-index: 2;
-    padding: 12px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 .product-detail-close img{
 }

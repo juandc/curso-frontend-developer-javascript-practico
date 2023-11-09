@@ -6,6 +6,7 @@ const carButton = document.querySelector(".navbar-shopping-cart")
 const shoppingCart = document.querySelector(".product-detail")
 const cardContainer = document.querySelector(".cards-container")
 const productDetailStore = document.querySelector("#productDetailStore")
+const productDetailClose = document.querySelector(".product-detail-close")
 
 const nameProductList = ["Laptop", "Celular", "Bike", "Pescera", "El Psicoanalista - Libro"]
 const priceProductList = [2100, 900, 120, 50, 10]
@@ -49,6 +50,10 @@ function openProductDetail(){
   productDetailStore.classList.add('active')
 }
 
+function closeProductDetail(){
+  productDetailStore.classList.remove('active')
+}
+
 function documentCreateHTMLProducts(){
   // Creando y agregando elementos al DOM
   for(product of productList){
@@ -59,7 +64,12 @@ function documentCreateHTMLProducts(){
     imgProduct.setAttribute("src", product.image)
     imgProduct.setAttribute("alt", "Imagen del producto no encontrado")
     // Agregando un evento a la imagen
-    imgProduct.addEventListener('click', openProductDetail)
+    imgProduct.addEventListener('click', () =>{
+      openProductDetail()
+      if(shoppingCart.classList.contains('active')) shoppingCart.classList.remove('active')
+      if(desktopMenu.classList.contains('active')) desktopMenu.classList.remove('active')
+      if(barMenu.classList.contains('active')) barMenu.classList.remove('active')
+    })
     
     let divProductInfo = document.createElement("div")
     divProductInfo.setAttribute("class", "product-info")
@@ -114,7 +124,6 @@ function optimizarVisualizacionMenus(classMenu1, classMenu2, classElement){
   }
 }
 
-
 // * EVENTOS
 
 document.addEventListener("DOMContentLoaded", () =>{
@@ -134,7 +143,7 @@ navbarEmail.addEventListener("click", (e) =>{
 
   // toggleElement(".desktop-menu","active")
   optimizarVisualizacionMenus(".desktop-menu", ".product-detail", "active")
-
+  if(productDetailStore.classList.contains('active')) productDetailStore.classList.remove('active')
   // if (!desktopMenu.classList.contains("active")){
   //   desktopMenu.classList.add('active')
   // }else{
@@ -146,6 +155,7 @@ barMenu.addEventListener("click", (e) => {
   e.preventDefault()
   // toggleElement(".mobile-menu"," active")
   optimizarVisualizacionMenus(".mobile-menu", ".product-detail", "active")
+  if(productDetailStore.classList.contains('active')) productDetailStore.classList.remove('active')
 })
 
 carButton.addEventListener("click", (e) => {
@@ -156,4 +166,9 @@ carButton.addEventListener("click", (e) => {
   }else{
     optimizarVisualizacionMenus(".product-detail", ".mobile-menu", "active")
   }
+
+  if(productDetailStore.classList.contains('active')) productDetailStore.classList.remove('active')
+  
 })
+
+productDetailClose.addEventListener('click', closeProductDetail)
