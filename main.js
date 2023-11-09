@@ -11,34 +11,47 @@ const productDetailClose = document.querySelector(".product-detail-close")
 const nameProductList = ["Laptop", "Celular", "Bike", "Pescera", "El Psicoanalista - Libro"]
 const priceProductList = [2100, 900, 120, 50, 10]
 const imageProductList = [
-  "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://http2.mlstatic.com/D_NQ_NP_793921-MLM50274201387_062022-O.webp",
 
-  "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://ichef.bbci.co.uk/news/640/cpsprodpb/BE54/production/_117842784_lg.jpg",
 
   "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
   
-  "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://http2.mlstatic.com/D_NQ_NP_738877-MCO49337902230_032022-O.webp",
 
-  "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+  "https://resources.claroshop.com/imagenes-sanborns-ii/1200/9786073831413_3.jpg"
 ]
 
-function products(name, price, image){
+const descriptionProductList = [
+  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos id corporis assumenda quas odit repellat animi facilis aut eius voluptate?",
+
+  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque rerum eligendi sapiente quia fuga quos maxime velit ratione fugiat porro nihil ipsam ullam quo repellat, voluptas eveniet ducimus iste fugit.",
+
+  "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates voluptas vitae ducimus possimus explicabo. Ea?",
+  
+  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident officiis, architecto voluptates harum libero doloribus illum reprehenderit est, necessitatibus, mollitia possimus at ullam!",
+
+  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum distinctio sit repellendus voluptatum, facere a."
+]
+
+function products(name, price, image, description){
   this.name = name
   this.price = price
   this.image = image
+  this.description = description
 }
 
-function generateProducts( name, price, image){
+function generateProducts( name, price, image, description){
   const items = []
   for(let i=0; i < name.length; i++){
     let newProduct
-    newProduct = new products(name[i], price[i], image[i])
+    newProduct = new products(name[i], price[i], image[i], description[i])
     items.push(newProduct)
   }
   return items
 }
 
-const productList = generateProducts(nameProductList, priceProductList, imageProductList)
+const productList = generateProducts(nameProductList, priceProductList, imageProductList, descriptionProductList)
 
 /**
  * Permite agregar los productos al HTML
@@ -54,6 +67,17 @@ function closeProductDetail(){
   productDetailStore.classList.remove('active')
 }
 
+function setDataProduct(precio, nombre, urlImage, description){
+  const lblPrice = document.querySelector("#priceDetailStore")
+  const lblName = document.querySelector("#nameDetailStore")
+  const imageProduct = document.querySelector("#imageDetailStore")
+  const descriptionProduct = document.querySelector("#descriptionDetailStore")
+  lblPrice.innerText ="$"+precio
+  lblName.innerText = nombre 
+  imageProduct.setAttribute("src", urlImage)
+  descriptionProduct.innerText = description
+}
+
 function documentCreateHTMLProducts(){
   // Creando y agregando elementos al DOM
   for(product of productList){
@@ -64,8 +88,16 @@ function documentCreateHTMLProducts(){
     imgProduct.setAttribute("src", product.image)
     imgProduct.setAttribute("alt", "Imagen del producto no encontrado")
     // Agregando un evento a la imagen
-    imgProduct.addEventListener('click', () =>{
+    imgProduct.addEventListener('click', (e) =>{
       openProductDetail()
+      let urlImageProduct = e.target.getAttribute("src")
+      let precioProducto = e.target.parentElement.childNodes[1].childNodes[0].childNodes[0].textContent
+      let nombreProducto = e.target.parentElement.childNodes[1].childNodes[0].childNodes[1].textContent
+      let descripcionProducto = e.target.parentElement.childNodes[1].childNodes[0].childNodes[2].getAttribute('value')
+
+      setDataProduct(precioProducto, nombreProducto, urlImageProduct, descripcionProducto)
+
+
       if(shoppingCart.classList.contains('active')) shoppingCart.classList.remove('active')
       if(desktopMenu.classList.contains('active')) desktopMenu.classList.remove('active')
       if(barMenu.classList.contains('active')) barMenu.classList.remove('active')
@@ -75,20 +107,26 @@ function documentCreateHTMLProducts(){
     divProductInfo.setAttribute("class", "product-info")
     
     let divPriceName = document.createElement("div")
+
+    let hiddenInput = document.createElement("input")
+    hiddenInput.setAttribute("type", 'hidden')
     
     let pPrice, pName
     pPrice = document.createElement("p")
     pName = document.createElement("p")
     pPrice.innerText = product.price
     pName.innerText = product.name
+    hiddenInput.value = product.description
 
     let figureProduct = document.createElement("figure")
     
     let iconProduct = document.createElement("img")
     iconProduct.setAttribute("src", "./icons/bt_add_to_cart.svg")
     iconProduct.setAttribute("alt", "Icono de comprar no encontrado")
+
     
-    divPriceName.append(pPrice, pName)
+    
+    divPriceName.append(pPrice, pName, hiddenInput)
     figureProduct.appendChild(iconProduct)
 
     divProductInfo.append(divPriceName, figureProduct)

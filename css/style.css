@@ -381,8 +381,6 @@ nav {
     justify-content: center;
     align-items: center;
 }
-.product-detail-close img{
-}
 .product-detail-close:hover {
     cursor: pointer;
 }
