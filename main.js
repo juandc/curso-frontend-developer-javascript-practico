@@ -5,8 +5,13 @@ const menuMobile = document.querySelector(".mobile-menu")
 const carButton = document.querySelector(".navbar-shopping-cart")
 const shoppingCart = document.querySelector(".product-detail")
 const cardContainer = document.querySelector(".cards-container")
+const productCartContainer = document.querySelector("#shoppingCartContainer")
 const productDetailStore = document.querySelector("#productDetailStore")
 const productDetailClose = document.querySelector(".product-detail-close")
+const orderContent = document.querySelector(".my-order-content")
+const orderCart = document.querySelector(".order")
+const numberProductCart = document.querySelector("#totalProducts")
+
 
 const nameProductList = ["Laptop", "Celular", "Bike", "Pescera", "El Psicoanalista - Libro"]
 const priceProductList = [2100, 900, 120, 50, 10]
@@ -72,10 +77,58 @@ function setDataProduct(precio, nombre, urlImage, description){
   const lblName = document.querySelector("#nameDetailStore")
   const imageProduct = document.querySelector("#imageDetailStore")
   const descriptionProduct = document.querySelector("#descriptionDetailStore")
-  lblPrice.innerText ="$"+precio
+  lblPrice.innerText = precio
   lblName.innerText = nombre 
   imageProduct.setAttribute("src", urlImage)
   descriptionProduct.innerText = description
+}
+/**
+ * 
+ * 
+ * <div class="shopping-cart">
+        <figure>
+          <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="bike">
+        </figure>
+        <p>Bike</p>
+        <p>$30,00</p>
+        <img src="./icons/icon_close.png" alt="close">
+    </div>
+ */
+function addProductCart(urlImage, nameProduct, priceProduct){
+  
+
+  let divProductCard = document.createElement("div")
+  divProductCard.setAttribute("class", "shopping-cart")
+  let figureProduct = document.createElement("figure")
+  let imageProduct = document.createElement("img")
+  imageProduct.setAttribute("src", urlImage)
+
+  figureProduct.appendChild(imageProduct)
+
+  let pName, pPrice
+  pName = document.createElement("p")
+  pPrice = document.createElement("p")
+  pName.innerText = nameProduct
+  pPrice.innerText = priceProduct
+  
+  let iconClose = document.createElement("img")
+  iconClose.setAttribute("src", "./icons/icon_close.png")
+
+  divProductCard.append(figureProduct, pName, pPrice, iconClose)
+
+  orderContent.insertBefore(divProductCard, orderCart)
+
+  if(productDetailStore.classList.contains("active")) productDetailStore.classList.remove("active")
+  if(shoppingCart.classList.contains("active")) shoppingCart.classList.remove("active")
+  numberProductCart.innerText = countElementsCart()
+}
+
+function countElementsCart(){
+  const cartProduct = document.querySelectorAll(".shopping-cart")
+  return cartProduct.length
+}
+function totalAmountCart(){
+
 }
 
 function documentCreateHTMLProducts(){
@@ -87,7 +140,7 @@ function documentCreateHTMLProducts(){
     let imgProduct = document.createElement("img")
     imgProduct.setAttribute("src", product.image)
     imgProduct.setAttribute("alt", "Imagen del producto no encontrado")
-    // Agregando un evento a la imagen
+    // Agregando un evento a la imagen del producto
     imgProduct.addEventListener('click', (e) =>{
       openProductDetail()
       let urlImageProduct = e.target.getAttribute("src")
@@ -114,7 +167,7 @@ function documentCreateHTMLProducts(){
     let pPrice, pName
     pPrice = document.createElement("p")
     pName = document.createElement("p")
-    pPrice.innerText = product.price
+    pPrice.innerText = "$" + product.price
     pName.innerText = product.name
     hiddenInput.value = product.description
 
@@ -124,6 +177,16 @@ function documentCreateHTMLProducts(){
     iconProduct.setAttribute("src", "./icons/bt_add_to_cart.svg")
     iconProduct.setAttribute("alt", "Icono de comprar no encontrado")
 
+    // Agregando evento al icono del carrito de compras del producto
+    iconProduct.addEventListener('click', (e) => {
+      let urlImageProduct = e.target.parentElement.parentElement.parentElement.childNodes[0].getAttribute("src")
+      let precioProducto = e.target.parentElement.parentElement.parentElement.childNodes[1].childNodes[0].childNodes[0].textContent
+      let nombreProducto = e.target.parentElement.parentElement.parentElement.childNodes[1].childNodes[0].childNodes[1].textContent
+
+      addProductCart(urlImageProduct, nombreProducto, precioProducto)
+    })
+
+    // Agregando etiquetas HTML creadas al DOM
     
     
     divPriceName.append(pPrice, pName, hiddenInput)
@@ -168,6 +231,8 @@ document.addEventListener("DOMContentLoaded", () =>{
   console.log("El documento esta listo para ser manipulado")
   // GENERAR LA LISTA DE PRODUCTOS
   documentCreateHTMLProducts()
+  numberProductCart.innerText = countElementsCart()
+
 })
 window.addEventListener("resize", ()=>{
   const anchoVentana = window.innerWidth
