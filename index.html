@@ -1,19 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="./styles.css">
-
-  <title>YardSale: tienda online de cositas chidas</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Shopify - Yard Sale</title>
 </head>
 <body>
+  <!-- MENÚ DE NAVEGACIÓN -->
   <nav>
     <img src="./icons/icon_menu.svg" alt="menu" class="menu">
 
@@ -22,22 +20,22 @@
 
       <ul>
         <li>
-          <a href="/">All</a>
+          <a href="#">All</a>
         </li>
         <li>
-          <a href="/">Clothes</a>
+          <a href="#">Clothes</a>
         </li>
         <li>
-          <a href="/">Electronics</a>
+          <a href="#">Electronics</a>
         </li>
         <li>
-          <a href="/">Furnitures</a>
+          <a href="#">Furnitures</a>
         </li>
         <li>
-          <a href="/">Toys</a>
+          <a href="#">Toys</a>
         </li>
         <li>
-          <a href="/">Others</a>
+          <a href="#">Others</a>
         </li>
       </ul>
     </div>
@@ -47,12 +45,14 @@
         <li class="navbar-email">platzi@example.com</li>
         <li class="navbar-shopping-cart">
           <img src="./icons/icon_shopping_cart.svg" alt="shopping cart">
-          <div>2</div>
+          <div id="totalProducts">0</div>
         </li>
       </ul>
     </div>
-
-    <div class="desktop-menu inactive">
+    <!-- 
+      * menú del usuario
+    -->
+    <div class="desktop-menu">
       <ul>
         <li>
           <a href="/" class="title">My orders</a>
@@ -68,7 +68,7 @@
       </ul>
     </div>
 
-    <div class="mobile-menu inactive">
+    <div class="mobile-menu">
       <ul>
         <li>
           <a href="/">CATEGORIES</a>
@@ -112,15 +112,17 @@
       </ul>
     </div>
   </nav>
-
-  <aside id="shoppingCartContainer" class="inactive">
+  <!-- * FIN DEL MENU DE NAVEGACIÓN -->
+  
+  <!-- * CARRITO DEO COMPRAS -->
+  <aside id="shoppingCartContainer" class="product-detail">
     <div class="title-container">
       <img src="./icons/flechita.svg" alt="arrow">
       <p class="title">My order</p>
     </div>
 
     <div class="my-order-content">
-      <div class="shopping-cart">
+      <!-- <div class="shopping-cart">
         <figure>
           <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="bike">
         </figure>
@@ -136,22 +138,22 @@
         <p>Bike</p>
         <p>$30,00</p>
         <img src="./icons/icon_close.png" alt="close">
-      </div>
+      </div> -->
 
-      <div class="shopping-cart">
+      <!-- <div class="shopping-cart">
         <figure>
           <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="bike">
         </figure>
         <p>Bike</p>
         <p>$30,00</p>
         <img src="./icons/icon_close.png" alt="close">
-      </div>
+      </div> -->
 
       <div class="order">
         <p>
           <span>Total</span>
         </p>
-        <p>$560.00</p>
+        <p id="totalAmount">0</p>
       </div>
 
       <button class="primary-button">
@@ -161,26 +163,29 @@
   </div>
   </aside>
 
-  <aside id="productDetail" class="inactive">
+  <aside id="productDetailStore" class="product-detail-store">
     <div class="product-detail-close">
       <img src="./icons/icon_close.png" alt="close">
     </div>
-    <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="bike">
+    <img id="imageDetailStore" src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="bike">
     <div class="product-info">
-      <p>$35,00</p>
-      <p>Bike</p>
-      <p>With its practical position, this bike also fulfills a decorative function, add your hall or workspace.</p>
+      <p id="priceDetailStore">$35,00</p>
+      <p id="nameDetailStore">Bike</p>
+      <p id="descriptionDetailStore">With its practical position, this bike also fulfills a decorative function, add your hall or workspace.</p>
       <button class="primary-button add-to-cart-button">
         <img src="./icons/bt_add_to_cart.svg" alt="add to cart">
         Add to cart
       </button>
     </div>
   </aside>
+  <!-- * FIN DEL CARRITO DE COMPRAS -->
 
+  <!-- * CONTENEDOR PRINCIPAL  -->
   <section class="main-container">
     <div class="cards-container">
 
-      <!-- <div class="product-card">
+      <!-- 
+      <div class="product-card">
         <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
         <div class="product-info">
           <div>
@@ -188,14 +193,15 @@
             <p>Bike</p>
           </div>
           <figure>
-            <img src="./icons/bt_add_to_cart.svg" alt="">
+            <img src="./icons/bt_ad d_to_carsst.svg" alt="Recurso no encontrado">
           </figure>
         </div>
-      </div> -->
-
+      </div>
+      -->
     </div>
   </section>
 
-  <script src="./main.js"></script>
+  <!-- * FIN DEL CONTENEDOR PRINCIPAL  -->
+  <script src="./main.js"> </script>
 </body>
 </html>
