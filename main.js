@@ -11,6 +11,7 @@ const productDetailClose = document.querySelector(".product-detail-close")
 const orderContent = document.querySelector(".my-order-content")
 const orderCart = document.querySelector(".order")
 const numberProductCart = document.querySelector("#totalProducts")
+const totalAmount = document.getElementById("totalAmount")
 
 
 const nameProductList = ["Laptop", "Celular", "Bike", "Pescera", "El Psicoanalista - Libro"]
@@ -82,20 +83,8 @@ function setDataProduct(precio, nombre, urlImage, description){
   imageProduct.setAttribute("src", urlImage)
   descriptionProduct.innerText = description
 }
-/**
- * 
- * 
- * <div class="shopping-cart">
-        <figure>
-          <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="bike">
-        </figure>
-        <p>Bike</p>
-        <p>$30,00</p>
-        <img src="./icons/icon_close.png" alt="close">
-    </div>
- */
+
 function addProductCart(urlImage, nameProduct, priceProduct){
-  
 
   let divProductCard = document.createElement("div")
   divProductCard.setAttribute("class", "shopping-cart")
@@ -108,11 +97,21 @@ function addProductCart(urlImage, nameProduct, priceProduct){
   let pName, pPrice
   pName = document.createElement("p")
   pPrice = document.createElement("p")
+  pPrice.setAttribute("id", "precioProducto")
   pName.innerText = nameProduct
   pPrice.innerText = priceProduct
   
   let iconClose = document.createElement("img")
   iconClose.setAttribute("src", "./icons/icon_close.png")
+  // Agregando un evento al icono (close) del producto en el carrito de compras
+  iconClose.addEventListener('click', (e) => {
+    let elementoContenedor = e.target.parentElement.parentElement
+
+    // Eliminando producto del carrito
+    elementoContenedor.removeChild(e.target.parentElement)
+    totalAmount.innerText = totalAmountCart()
+  })
+
 
   divProductCard.append(figureProduct, pName, pPrice, iconClose)
 
@@ -120,7 +119,9 @@ function addProductCart(urlImage, nameProduct, priceProduct){
 
   if(productDetailStore.classList.contains("active")) productDetailStore.classList.remove("active")
   if(shoppingCart.classList.contains("active")) shoppingCart.classList.remove("active")
+
   numberProductCart.innerText = countElementsCart()
+  totalAmount.innerText = totalAmountCart()
 }
 
 function countElementsCart(){
@@ -128,7 +129,13 @@ function countElementsCart(){
   return cartProduct.length
 }
 function totalAmountCart(){
-
+  const precioProducto = document.querySelectorAll("#precioProducto")
+  let totalAmount = 0
+  precioProducto.forEach( (product) => {
+    let lengthPrice = product.length
+    totalAmount += parseFloat(product.innerText.slice(1, lengthPrice))
+  })
+  return "$" + totalAmount
 }
 
 function documentCreateHTMLProducts(){
@@ -228,10 +235,10 @@ function optimizarVisualizacionMenus(classMenu1, classMenu2, classElement){
 // * EVENTOS
 
 document.addEventListener("DOMContentLoaded", () =>{
-  console.log("El documento esta listo para ser manipulado")
   // GENERAR LA LISTA DE PRODUCTOS
   documentCreateHTMLProducts()
   numberProductCart.innerText = countElementsCart()
+  totalAmount.innerText = totalAmountCart()
 
 })
 window.addEventListener("resize", ()=>{
