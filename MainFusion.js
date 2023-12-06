@@ -3,7 +3,7 @@ const desktopMenu= document.querySelector('.desktop-menu');
 const menuHamburger= document.querySelector('.menu');
 const mobilmenu= document.querySelector('.mobile-menu');
 const carrito_compras= document.querySelector('.navbar-shopping-cart');//esta es la clase general pero llama a la clase "aside"
-const aside= document.querySelector('.product-detail');
+const shoppinCartContainer= document.querySelector('#shoppinCartContainer');
 const CardsContainer= document.querySelector('.cards-container');
 
 
@@ -24,10 +24,10 @@ carrito_compras.addEventListener('click', toggle_carrito_compras);
 
 
 function toggleDesktopMenu() {
-    const isasideclosed= aside.classList.contains('inactive');
+    const isasideclosed= shoppinCartContainer.classList.contains('inactive');
 
     if (!isasideclosed) {
-        aside.classList.add('inactive');
+        shoppinCartContainer.classList.add('inactive');
 
     }
     desktopMenu.classList.toggle('inactive')
@@ -35,9 +35,9 @@ function toggleDesktopMenu() {
 }
 
 function togglemobilmenu() {
-    const isasideclosed= aside.classList.contains('inactive');
+    const isasideclosed= shoppinCartContainer.classList.contains('inactive');
     if (!isasideclosed) {
-        aside.classList.add('inactive');
+        shoppinCartContainer.classList.add('inactive');
 
     }
 
@@ -57,7 +57,7 @@ function toggle_carrito_compras() {//el carrito de compras es manejado por la va
             mobilmenu.classList.add('inactive');
 
         }
-        aside.classList.toggle('inactive');
+        shoppinCartContainer.classList.toggle('inactive');
         
     }
 
