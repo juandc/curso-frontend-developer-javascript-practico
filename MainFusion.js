@@ -2,9 +2,11 @@ const menuEmail = document.querySelector('.navbar-email');
 const desktopMenu= document.querySelector('.desktop-menu');
 const menuHamburger= document.querySelector('.menu');
 const mobilmenu= document.querySelector('.mobile-menu');
+const product_detail_close= document.querySelector('.product-detail-close');
 const carrito_compras= document.querySelector('.navbar-shopping-cart');//esta es la clase general pero llama a la clase "aside"
 const shoppinCartContainer= document.querySelector('#shoppinCartContainer');
 const CardsContainer= document.querySelector('.cards-container');
+const product_detailContainer= document.querySelector('#product-detail');
 
 
 
@@ -35,6 +37,7 @@ function toggleDesktopMenu() {
 }
 
 function togglemobilmenu() {
+    product_detailContainer.classList.add('inactive');
     const isasideclosed= shoppinCartContainer.classList.contains('inactive');
     if (!isasideclosed) {
         shoppinCartContainer.classList.add('inactive');
@@ -57,19 +60,42 @@ function toggle_carrito_compras() {//el carrito de compras es manejado por la va
             mobilmenu.classList.add('inactive');
 
         }
+            /////////cierra el product datail si esta abierto
+        const isproduct_detailContainerClosed = product_detailContainer.classList.contains('inactive');
+        if (!isproduct_detailContainerClosed) {
+            product_detailContainer.classList.add('inactive');
+
+        }
+
+        if (!ismobileMenuclosed) {
+            mobilmenu.classList.add('inactive');
+
+        }
         shoppinCartContainer.classList.toggle('inactive');
         
     }
 
 
+
+    function openProductDeatailAside() {
+        shoppinCartContainer.classList.add('inactive');//para este caso de estas 2 funciones se puede hacer el cierre de esta forma por que no es un toggle
+
+        product_detailContainer.classList.remove('inactive');//utilizamos remove para quitarle la clase inactive al elemento
+    }
+    function closeProductDeatailAside() {
+        product_detailContainer.classList.add('inactive');
+    }
+
 const productlist = [];
 productlist.push({
+    id:1,
     name:'bike',
     price:120,
     image:'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
 
 });
 productlist.push({
+    id:2,
     name:'pantalla',
     price:320,
     image:'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
@@ -77,18 +103,21 @@ productlist.push({
 });
 
 productlist.push({
+    id:3,
     name:'telefonos',
     price:150,
     image:'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
 
 });
 productlist.push({
+    id:4,
     name:'bike',
     price:120,
     image:'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
 
 });
 productlist.push({
+    id:5,
     name:'pantalla',
     price:320,
     image:'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
@@ -96,6 +125,7 @@ productlist.push({
 });
 
 productlist.push({
+    id:6,
     name:'telefonos',
     price:150,
     image:'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
@@ -123,6 +153,9 @@ productlist.push({
             productCard.classList.add('product-card');
             const  productimg= document.createElement('img');
             productimg.setAttribute('src',product.image);
+            productimg.addEventListener('click',openProductDeatailAside);
+            product_detail_close.addEventListener('click',closeProductDeatailAside);
+
             const productInf= document.createElement('div');
             productInf.classList.add('product-info');
             const productInfDiv= document.createElement('div');
