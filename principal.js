@@ -23,9 +23,26 @@ function toggleCarritoAside(){
 }
 
 function toggleDesktopMenu(){
-    desktopMenu.classList.toggle('inactive');
+
+   // desktopMenu.classList.toggle('inactive');
+   const isCarritoClosed = aside.classList.contains('inactive');
+
+   if(!isCarritoClosed){
+       aside.classList.add('inactive');
+       desktopMenu.classList.toggle('inactive');
+   }
+
+   desktopMenu.classList.toggle('inactive');
 }
 
 function toggleDesktopMenuMobile(){
+    
+    const isCarritoClosed = aside.classList.contains('inactive');
+
+    if(!isCarritoClosed){
+        aside.classList.add('inactive');
+    }
+
     mobileMenu.classList.toggle('inactive');
+    
 }
