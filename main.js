@@ -5,7 +5,7 @@ const mobileMenu =document.querySelector('.mobile-menu');
 const menuCarritoIcon =document.querySelector('.navbar-shopping-cart');
 const  aside = document.querySelector('.product-detail');
 
-
+//variables con eventos
 
 menuEmail.addEventListener('click', toggleDesktopMenu);
 menuHamIcon.addEventListener('click',toggleMobileMenu)
