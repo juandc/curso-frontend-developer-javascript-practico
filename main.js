@@ -10,7 +10,7 @@ const  aside = document.querySelector('.product-detail');
 menuEmail.addEventListener('click', toggleDesktopMenu);
 menuHamIcon.addEventListener('click',toggleMobileMenu)
 menuCarritoIcon.addEventListener('click',togglecarritoAside)
-
+//funciones para que se cierre y abran los menus
 function toggleDesktopMenu (){
   console.log('click');
   const isAsideClosed = aside.classList.contains('inactive');
