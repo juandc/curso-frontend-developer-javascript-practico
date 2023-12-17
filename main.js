@@ -4,7 +4,7 @@ const menuHamIcon =document.querySelector('.menu');
 const mobileMenu =document.querySelector('.mobile-menu');
 const menuCarritoIcon =document.querySelector('.navbar-shopping-cart');
 const  aside = document.querySelector('.product-detail');
-
+//cambio de usuario 
 //variables con eventos
 
 menuEmail.addEventListener('click', toggleDesktopMenu);
