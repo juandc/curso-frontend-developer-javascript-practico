@@ -31,9 +31,15 @@ function toggleMobileMenu() {
 
 function toggleCarritoAside() {
   const isMobileMenuClosed = mobileMenu.classList.contains('inactive');
+  const isDesktopMenyClosed = desktopMenu.classList.contains('inactive');
   
-  if (!isMobileMenuClosed) {
+  if (!isMobileMenuClosed) 
+  {
     mobileMenu.classList.add('inactive'); 
+  }
+  else if (!isDesktopMenyClosed)
+  {
+    desktopMenu.classList.add('inactive');
   }
   
   aside.classList.toggle('inactive');
