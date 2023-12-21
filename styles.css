@@ -1,4 +1,3 @@
-/* General */
 :root {
   --white: #FFFFFF;
   --black: #000000;
@@ -13,12 +12,13 @@ body {
   margin: 0;
   font-family: 'Quicksand', sans-serif;
 }
-.inactive {
+
+
+/* este es el codigo del menu para desktop*/
+
+.inactive{
   display: none;
 }
-
-
-/* Navbar (general) */
 nav {
   display: flex;
   justify-content: space-between;
@@ -83,11 +83,10 @@ nav {
   align-items: center;
 }
 
-/* Menu en desktop */
 .desktop-menu {
   position: absolute;
-  top: 60px;
-  right: 60px;
+  top:60px;
+  right: 0;
   background: var(--white);
   width: 100px;
   height: auto;
@@ -120,13 +119,15 @@ nav {
   text-decoration: none;
   margin-bottom: 20px;
   display: inline-block;
+  width: 100%;
 }
 
-/* Menu en mobile */
+
+/* este es el codigo css para el menu de celular */
 .mobile-menu {
   background-color: var(--white);
-  position: absolute;
-  top: 60px;
+  position:absolute;
+  top:60px;
   left: 0;
   width: 100%;
   padding: 24px;
@@ -158,8 +159,10 @@ nav {
 }
 
 
-/* Aside (product detail y carrito) */
-aside {
+
+/* Aside (product detail y carrito*/
+
+ aside{
   background-color: var(--white);
   width: 360px;
   box-sizing: border-box;
@@ -167,9 +170,12 @@ aside {
   right: 0;
 }
 
-/* ShoppingCart */
-#shoppingCartContainer {
+
+
+/*shoppingCart*/
+#shoppingCartContainer{
   padding: 0 24px;
+
 }
 .title-container {
   display: flex;
@@ -239,7 +245,7 @@ aside {
   height: 50px;
 }
 
-/* ProductDetail */
+/*productDetail*/
 .product-detail-close {
   background: var(--white);
   width: 14px;
@@ -260,10 +266,10 @@ aside {
   object-fit: cover;
   border-radius: 0 0 20px 20px;
 }
-#productDetail .product-info {
+ #productDetail .product-info {
   margin: 24px 24px 0 24px;
 }
-#productDetail .product-info p:nth-child(1) {
+ #productDetail .product-info p:nth-child(1) {
   font-weight: bold;
   font-size: var(--md);
   margin-top: 0;
@@ -298,14 +304,14 @@ aside {
   justify-content: center;
 }
 
+/*codigo de la lista de productos clase 6*/
 
-/* Product List */
 .cards-container {
+  margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(auto-fill, 240px);
   gap: 26px;
   place-content: center;
-  margin-top: 20px;
 }
 .product-card {
   width: 240px;
@@ -316,51 +322,32 @@ aside {
   border-radius: 20px;
   object-fit: cover;
 }
-.product-card .product-info {
+ .product-card .product-info {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 12px;
 }
-.product-card .product-info figure {
+ .product-card .product-info figure {
   margin: 0;
 }
-.product-card .product-info figure img {
+ .product-card .product-info figure img {
   width: 35px;
   height: 35px;
 }
-.product-card .product-info div p:nth-child(1) {
+ .product-card .product-info div p:nth-child(1) {
   font-weight: bold;
   font-size: var(--md);
   margin-top: 0;
   margin-bottom: 4px;
 }
-.product-card .product-info div p:nth-child(2) {
+ .product-card .product-info div p:nth-child(2) {
   font-size: var(--sm);
   margin-top: 0;
   margin-bottom: 0;
   color: var(--very-light-pink);
 }
-
-
 @media (max-width: 640px) {
-  .menu {
-    display: block;
-  }
-  .navbar-left ul {
-    display: none;
-  }
-  .navbar-email {
-    display: none;
-  }
-  .desktop-menu {
-    display: none;
-  }
-
-  aside {
-    width: 100%;
-  }
-
   .cards-container {
     grid-template-columns: repeat(auto-fill, 140px);
   }
@@ -373,8 +360,31 @@ aside {
   }
 }
 
-@media (min-width: 641px) {
-  .mobile-menu {
+@media (max-width: 640px) {
+  .menu {
+    display: block;
+  }
+  .navbar-left ul {
     display: none;
   }
+  .navbar-email {
+    display: none;
+  }
+  .desktop-menu{
+    display:none;
+  }
+  .product-detail {
+    width: 100%;
+  }
+}
+
+
+@media (min-width: 641px) {
+  .mobile-menu{
+
+    display: none;
+  }
+
+   
+
 }
