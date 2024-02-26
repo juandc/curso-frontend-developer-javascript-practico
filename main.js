@@ -8,11 +8,15 @@ const mobileMenu = document.querySelector('.mobile-menu');
 //
 const menuCarritoIcon = document.querySelector('.navbar-shopping-cart');
 const shoppingCartContainer = document.querySelector('#shoppingCartContainer');
+const productDetailContainer = document.querySelector('#productDetail');
 const cardsContainer = document.querySelector('.cards-container');
+const productDetailCloseIcon= document.querySelector('.product-detail-close');
+
 
 menuEmail.addEventListener('click',toggleDesktopMenu);
 burguerMenu.addEventListener('click',toggleMobileMenu);
 menuCarritoIcon.addEventListener('click',toggleCarritoAside);
+productDetailCloseIcon.addEventListener('click',closeProductDetailAside);
 
 // creamos una funcion para realizar el evento de click
 function toggleDesktopMenu(){
@@ -27,8 +31,9 @@ function toggleMobileMenu(){
     if(!isAsideClosed){
       shoppingCartContainer.classList.add('inactive');
     }
-     
+    closeProductDetailAside();
     mobileMenu.classList.toggle('inactive');
+
 }
 
 function toggleCarritoAside(){
@@ -42,7 +47,22 @@ function toggleCarritoAside(){
     }
     shoppingCartContainer.classList.toggle('inactive');
      
+    const isproductDetailClose = productDetailContainer.classList.contains('inactive');
+    if(!isproductDetailClose){
+      productDetailContainer.classList.add('inactive');
+     }
+
 }
+function openProductDetailAside (){
+   shoppingCartContainer.classList.add('inactive');  
+   productDetailContainer.classList.remove('inactive');
+
+}
+
+function closeProductDetailAside (){
+   productDetailContainer.classList.add('inactive');
+}
+
 // arreglo que nos devuelve la informacion luego de una consulta a BD
 const productList=[];
 //agregamos nuevos elementos al arreglo, mediante objetos
@@ -78,6 +98,7 @@ function renderProducts(arreglo){
       //creamos la imagen
       const productimg= document.createElement('img');
       productimg.setAttribute('src',product.image);
+      productimg.addEventListener('click',openProductDetailAside);
    
       //creamos class product-info
       const productInfo = document.createElement('div');
