@@ -12,6 +12,10 @@ const productDetailContainer = document.querySelector('#productDetail');
 const cardsContainer = document.querySelector('.cards-container');
 const productDetailCloseIcon= document.querySelector('.product-detail-close');
 
+const imagen = document.querySelector("#idImgpr");
+const priceProduct = document.querySelector("#idprice");
+const nombProduct = document.querySelector("#idnomprod");
+
 
 menuEmail.addEventListener('click',toggleDesktopMenu);
 burguerMenu.addEventListener('click',toggleMobileMenu);
@@ -53,10 +57,12 @@ function toggleCarritoAside(){
      }
 
 }
-function openProductDetailAside (){
+function openProductDetailAside (event){
    shoppingCartContainer.classList.add('inactive');  
    productDetailContainer.classList.remove('inactive');
-
+   desktopMenu.classList.add("inactive");
+   imagen.setAttribute("src", event.target.src);
+   priceProduct.innerText = event.target.nextElementSibling.innerText; 
 }
 
 function closeProductDetailAside (){
