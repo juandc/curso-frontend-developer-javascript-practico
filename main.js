@@ -12,15 +12,30 @@ const productDetailContainer = document.querySelector('#productDetail');
 const cardsContainer = document.querySelector('.cards-container');
 const productDetailCloseIcon= document.querySelector('.product-detail-close');
 
+
 const imagen = document.querySelector("#idImgpr");
 const priceProduct = document.querySelector("#idprice");
 const nombProduct = document.querySelector("#idnomprod");
+const buttonComprar= document.querySelector("#idButton");
 
 
 menuEmail.addEventListener('click',toggleDesktopMenu);
 burguerMenu.addEventListener('click',toggleMobileMenu);
 menuCarritoIcon.addEventListener('click',toggleCarritoAside);
 productDetailCloseIcon.addEventListener('click',closeProductDetailAside);
+buttonComprar.addEventListener('click',eventButton);
+
+//generador de objetos
+
+
+
+// generador de eventos de botones
+function eventButton(event){
+   console.log("evento boton");   
+   var valor= document.getElementById("idprice").innerHTML;
+   var imagencompra= imagen.getAttribute("src", event.target.src);   
+   console.log(imagencompra+" - "+valor);
+}
 
 // creamos una funcion para realizar el evento de click
 function toggleDesktopMenu(){
@@ -63,6 +78,7 @@ function openProductDetailAside (event){
    desktopMenu.classList.add("inactive");
    imagen.setAttribute("src", event.target.src);
    priceProduct.innerText = event.target.nextElementSibling.innerText; 
+  
 }
 
 function closeProductDetailAside (){
@@ -73,26 +89,26 @@ function closeProductDetailAside (){
 const productList=[];
 //agregamos nuevos elementos al arreglo, mediante objetos
 productList.push({
-   name:'Bike',
+   name:'Zapato para dama',
    price:120,
-   image:'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+   image:'https://www.paylesscolombia.co/38855-medium_default/women_s_fashion_sneakers.jpg'
 })
 
 productList.push({
-   name:'Pantalla',
+   name:'Zapato casual Hombre',
    price:253,
-   image:'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+   image:'https://www.paylesscolombia.co/38645-medium_default/men_s_botero_casual_shoes.jpg'
 })
 
 productList.push({
-   name:'celular',
+   name:'Zapato casual Hombre',
    price:820,
-   image:'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+   image:'https://www.paylesscolombia.co/38684-medium_default/men_s_chukka_casual_shoes.jpg'
 })
 productList.push({
-   name:'mouse',
+   name:'Zapato para Niño',
    price:24,
-   image:'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+   image:'https://www.paylesscolombia.co/38882-medium_default/boy_s_toddler_lace_court_sport_shoes.jpg'
 })
 
 
