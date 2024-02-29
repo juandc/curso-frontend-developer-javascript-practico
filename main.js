@@ -17,6 +17,7 @@ const imagen = document.querySelector("#idImgpr");
 const priceProduct = document.querySelector("#idprice");
 const nombProduct = document.querySelector("#idnomprod");
 const buttonComprar= document.querySelector("#idButton");
+const carritoCant= document.querySelector("#idcarritoCant");
 
 
 menuEmail.addEventListener('click',toggleDesktopMenu);
@@ -25,16 +26,28 @@ menuCarritoIcon.addEventListener('click',toggleCarritoAside);
 productDetailCloseIcon.addEventListener('click',closeProductDetailAside);
 buttonComprar.addEventListener('click',eventButton);
 
-//generador de objetos
+//arreglos 
+var valorDetallesProductos=[];
 
 
 
 // generador de eventos de botones
 function eventButton(event){
    console.log("evento boton");   
-   var valor= document.getElementById("idprice").innerHTML;
-   var imagencompra= imagen.getAttribute("src", event.target.src);   
-   console.log(imagencompra+" - "+valor);
+   var valorDetalle=document.getElementById("idprice").innerHTML;
+   //var valor= document.getElementById("idprice").innerHTML;
+   var imagencompra= imagen.getAttribute("src", event.target.src); 
+   var valorProdDetalle= valorDetalle.substring(1,7);
+   console.log(imagencompra+" - "+valorProdDetalle);
+   valorDetallesProductos.push({
+      valorProd: valorProdDetalle,
+      detImag:imagencompra
+   });
+   var valorCarritoprevio= parseInt(document.getElementById("idcarritoCant").innerHTML);   
+   
+   valorCarritoprevio +=1;
+   carritoCant.innerHTML= valorCarritoprevio;
+   console.log(valorDetallesProductos);
 }
 
 // creamos una funcion para realizar el evento de click
@@ -90,24 +103,24 @@ const productList=[];
 //agregamos nuevos elementos al arreglo, mediante objetos
 productList.push({
    name:'Zapato para dama',
-   price:120,
+   price:'120,00',
    image:'https://www.paylesscolombia.co/38855-medium_default/women_s_fashion_sneakers.jpg'
 })
 
 productList.push({
    name:'Zapato casual Hombre',
-   price:253,
+   price:'150,00',
    image:'https://www.paylesscolombia.co/38645-medium_default/men_s_botero_casual_shoes.jpg'
 })
 
 productList.push({
    name:'Zapato casual Hombre',
-   price:820,
+   price:'112,00',
    image:'https://www.paylesscolombia.co/38684-medium_default/men_s_chukka_casual_shoes.jpg'
 })
 productList.push({
    name:'Zapato para Niño',
-   price:24,
+   price:'100,00',
    image:'https://www.paylesscolombia.co/38882-medium_default/boy_s_toddler_lace_court_sport_shoes.jpg'
 })
 
