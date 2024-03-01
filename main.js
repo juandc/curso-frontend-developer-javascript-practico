@@ -13,7 +13,7 @@ const cardsContainer = document.querySelector('.cards-container');
 const productDetailCloseIcon= document.querySelector('.product-detail-close');
 const myOrderContent = document.querySelector('.my-order-content');
 myOrderContent.setAttribute("id","idmyOrderContent");
-
+const ididshopping=document.querySelector('#idshopping');
 
 const imagen = document.querySelector("#idImgpr");
 const priceProduct = document.querySelector("#idprice");
@@ -38,11 +38,11 @@ var canTotalDetaProd;
 function eventButton(event){
    console.log("evento boton");   
    var valorDetalle=document.getElementById("idprice").innerHTML;
-   //var valor= document.getElementById("idprice").innerHTML;
+ 
    var imagencompra= imagen.getAttribute("src", event.target.src); 
    var valorProdDetalle= valorDetalle.substring(1,7);
    var valorDetalleProducto= valorDetalle.substring(15,50);
-   //console.log(imagencompra+" - "+valorProdDetalle+"-"+valorDetalleProducto);
+   
    valorDetallesProductos.push({
       detImag:imagencompra,
       valorProd: valorProdDetalle,
@@ -52,9 +52,8 @@ function eventButton(event){
    var valorCarritoprevio= parseInt(document.getElementById("idcarritoCant").innerHTML);    
    valorCarritoprevio +=1;
    carritoCant.innerHTML= valorCarritoprevio;
-  // console.log(valorDetallesProductos);
-   // almacenamos la cantidad total de productos agregados al carrito
-   canTotalDetaProd= valorDetallesProductos.length;
+  
+   
 }
 
 // creamos una funcion para realizar el evento de click
@@ -76,6 +75,7 @@ function toggleMobileMenu(){
 }
 
 function toggleCarritoAside(e){
+   myOrderContent.innerHTML="";
     const isMobileMenuClosed = mobileMenu.classList.contains('inactive');
     if(!isMobileMenuClosed){
         mobileMenu.classList.add('inactive');
