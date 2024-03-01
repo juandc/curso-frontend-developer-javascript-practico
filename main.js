@@ -11,6 +11,8 @@ const shoppingCartContainer = document.querySelector('#shoppingCartContainer');
 const productDetailContainer = document.querySelector('#productDetail');
 const cardsContainer = document.querySelector('.cards-container');
 const productDetailCloseIcon= document.querySelector('.product-detail-close');
+const myOrderContent = document.querySelector('.my-order-content');
+myOrderContent.setAttribute("id","idmyOrderContent");
 
 
 const imagen = document.querySelector("#idImgpr");
@@ -18,6 +20,7 @@ const priceProduct = document.querySelector("#idprice");
 const nombProduct = document.querySelector("#idnomprod");
 const buttonComprar= document.querySelector("#idButton");
 const carritoCant= document.querySelector("#idcarritoCant");
+const shoppingcart= document.querySelector(".shopping-cart");
 
 
 menuEmail.addEventListener('click',toggleDesktopMenu);
@@ -27,8 +30,8 @@ productDetailCloseIcon.addEventListener('click',closeProductDetailAside);
 buttonComprar.addEventListener('click',eventButton);
 
 //arreglos 
-var valorDetallesProductos=[];
-
+const valorDetallesProductos=[];
+var canTotalDetaProd;
 
 
 // generador de eventos de botones
@@ -38,16 +41,20 @@ function eventButton(event){
    //var valor= document.getElementById("idprice").innerHTML;
    var imagencompra= imagen.getAttribute("src", event.target.src); 
    var valorProdDetalle= valorDetalle.substring(1,7);
-   console.log(imagencompra+" - "+valorProdDetalle);
+   var valorDetalleProducto= valorDetalle.substring(15,50);
+   //console.log(imagencompra+" - "+valorProdDetalle+"-"+valorDetalleProducto);
    valorDetallesProductos.push({
+      detImag:imagencompra,
       valorProd: valorProdDetalle,
-      detImag:imagencompra
+      valorDetalleProd:valorDetalleProducto
    });
-   var valorCarritoprevio= parseInt(document.getElementById("idcarritoCant").innerHTML);   
-   
+   // asignamos al icono de carrito la cantidad de productos que comprará
+   var valorCarritoprevio= parseInt(document.getElementById("idcarritoCant").innerHTML);    
    valorCarritoprevio +=1;
    carritoCant.innerHTML= valorCarritoprevio;
-   console.log(valorDetallesProductos);
+  // console.log(valorDetallesProductos);
+   // almacenamos la cantidad total de productos agregados al carrito
+   canTotalDetaProd= valorDetallesProductos.length;
 }
 
 // creamos una funcion para realizar el evento de click
@@ -68,7 +75,7 @@ function toggleMobileMenu(){
 
 }
 
-function toggleCarritoAside(){
+function toggleCarritoAside(e){
     const isMobileMenuClosed = mobileMenu.classList.contains('inactive');
     if(!isMobileMenuClosed){
         mobileMenu.classList.add('inactive');
@@ -83,6 +90,20 @@ function toggleCarritoAside(){
     if(!isproductDetailClose){
       productDetailContainer.classList.add('inactive');
      }
+     
+     const isshoppingCartContainerclose= shoppingCartContainer.classList.contains('inactive');
+     if(!isshoppingCartContainerclose){      
+       console.log("esta abierto el menu detalles compra");
+       renderDetallesCompra(valorDetallesProductos);
+       console.log("cantidad de registros en array:"+ valorDetallesProductos.length);   
+     }   
+     if(isshoppingCartContainerclose){
+      console.log("esta cerrado el menu detalles compra");
+      console.log("cantidad de registros en array:"+ valorDetallesProductos.length);        
+      
+     } 
+     
+     
 
 }
 function openProductDetailAside (event){
@@ -170,3 +191,35 @@ function renderProducts(arreglo){
 }
 
 renderProducts(productList);
+function renderDetallesCompra(array){
+   for(detalleCompraProduct of array){
+      const shoppingCart = document.createElement('div');
+      shoppingCart.classList.add('shopping-cart');
+      shoppingCart.setAttribute("id","idshopping");
+      // creamos etiqueta figure
+      const detalleInfoFigure= document.createElement('figure');
+     //creamos la imagen
+      const detalleImg= document.createElement('img');
+      detalleImg.setAttribute('src',detalleCompraProduct.detImag);
+      detalleInfoFigure.appendChild(detalleImg);
+     // creamos los p
+     const detalleProductNombre= document.createElement('p');
+     detalleProductNombre.innerText=  detalleCompraProduct.valorDetalleProd;
+
+     const detalleProductPrice= document.createElement('p');
+     detalleProductPrice.innerText= '$'+ detalleCompraProduct.valorProd;     
+
+     //creamos la imagen de cerrar 
+     const detalletImgCart= document.createElement('img');
+     detalletImgCart.setAttribute('src','./icons/icon_close.png');
+     detalletImgCart.setAttribute('alt','close');
+
+     shoppingCart.appendChild(detalleInfoFigure);
+     shoppingCart.appendChild(detalleProductNombre);
+     shoppingCart.appendChild(detalleProductPrice);
+     
+     myOrderContent.appendChild(shoppingCart);
+   }
+};
+
+
