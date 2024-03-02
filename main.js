@@ -21,6 +21,7 @@ const nombProduct = document.querySelector("#idnomprod");
 const buttonComprar= document.querySelector("#idButton");
 const carritoCant= document.querySelector("#idcarritoCant");
 const shoppingcart= document.querySelector(".shopping-cart");
+const idvalortotal= document.querySelector("#idvalorTotal");
 
 
 menuEmail.addEventListener('click',toggleDesktopMenu);
@@ -32,15 +33,16 @@ buttonComprar.addEventListener('click',eventButton);
 //arreglos 
 const valorDetallesProductos=[];
 var canTotalDetaProd;
+var costoTotal=0;
 
 
 // generador de eventos de botones
 function eventButton(event){
-   console.log("evento boton");   
+    
    var valorDetalle=document.getElementById("idprice").innerHTML;
  
    var imagencompra= imagen.getAttribute("src", event.target.src); 
-   var valorProdDetalle= valorDetalle.substring(1,7);
+   var valorProdDetalle= parseInt(valorDetalle.substring(1,7));
    var valorDetalleProducto= valorDetalle.substring(15,50);
    
    valorDetallesProductos.push({
@@ -48,6 +50,7 @@ function eventButton(event){
       valorProd: valorProdDetalle,
       valorDetalleProd:valorDetalleProducto
    });
+   costoTotal+=valorProdDetalle;
    // asignamos al icono de carrito la cantidad de productos que comprará
    var valorCarritoprevio= parseInt(document.getElementById("idcarritoCant").innerHTML);    
    valorCarritoprevio +=1;
@@ -76,6 +79,7 @@ function toggleMobileMenu(){
 
 function toggleCarritoAside(e){
    myOrderContent.innerHTML="";
+   idvalortotal.innerHTML="$"+costoTotal;
     const isMobileMenuClosed = mobileMenu.classList.contains('inactive');
     if(!isMobileMenuClosed){
         mobileMenu.classList.add('inactive');
@@ -93,16 +97,11 @@ function toggleCarritoAside(e){
      
      const isshoppingCartContainerclose= shoppingCartContainer.classList.contains('inactive');
      if(!isshoppingCartContainerclose){      
-       console.log("esta abierto el menu detalles compra");
+       
        renderDetallesCompra(valorDetallesProductos);
-       console.log("cantidad de registros en array:"+ valorDetallesProductos.length);   
+       
      }   
-     if(isshoppingCartContainerclose){
-      console.log("esta cerrado el menu detalles compra");
-      console.log("cantidad de registros en array:"+ valorDetallesProductos.length);        
-      
-     } 
-     
+    
      
 
 }
@@ -214,12 +213,14 @@ function renderDetallesCompra(array){
      detalletImgCart.setAttribute('src','./icons/icon_close.png');
      detalletImgCart.setAttribute('alt','close');
 
+     shoppingCart.appendChild(detalletImgCart);
      shoppingCart.appendChild(detalleInfoFigure);
      shoppingCart.appendChild(detalleProductNombre);
      shoppingCart.appendChild(detalleProductPrice);
      
      myOrderContent.appendChild(shoppingCart);
    }
+   
 };
 
 
