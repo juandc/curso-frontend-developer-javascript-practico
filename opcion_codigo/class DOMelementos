@@ -1,0 +1,21 @@
+class DOMelementos {
+  constructor() {
+    this.menuEmail = document.querySelector(".navbar-email");
+    this.desktopMenu = document.querySelector(".desktop-menu");
+    this.menuHamIcon = document.querySelector(".menu");
+    this.mobileMenu = document.querySelector(".mobile-menu");
+  }
+}
+
+const elementos = new DOMelementos();
+
+elementos.menuEmail.addEventListener("click", toogleDesktopMenu);
+elementos.menuHamIcon.addEventListener("click", toogleMobileMenu);
+
+function toogleDesktopMenu() {
+  desktopMenu.classList.toggle("inactive");
+}
+
+function toogleMobileMenu() {
+  mobileMenu.classList.toggle("inactive");
+}
