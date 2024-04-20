@@ -77,8 +77,8 @@ productList.push({
   image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
 });
 
-function renderProducts(arr) {
-  for (product of arr) {
+function renderProducts(products) {
+  for (product of products) {
     const productCard = document.createElement('div');
     productCard.classList.add('product-card');
   
@@ -117,3 +117,4 @@ function renderProducts(arr) {
 }
 
 renderProducts(productList);
+console.log(productList);

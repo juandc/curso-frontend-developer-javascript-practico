@@ -1,131 +1,115 @@
-// variables
-const navEmail =document.querySelector('.navbar-email');
-const desktop = document.querySelector('.desktop-menu')
-const menuHamburguesa = document.querySelector('.menu')
-const mobileMenu = document.querySelector('.mobile-menu')
-const menuCarrito = document.querySelector('.navbar-shopping-cart')
-const shoppingCart =document.querySelector('#shoppingCart')
-const cardsContainer = document.querySelector('.cards-container')
+const menuEmail=document.querySelector('.navbar-email');    //selecciona el elemento con la clase navbar-email
+const menuHamIcon=document.querySelector('.menu');      //selecciona el elemento con la clase menu
+const menuCarritoIcon=document.querySelector('.navbar-shopping-cart');      //selecciona el elemento con la clase navbar-shopping-cart
+const desktopMenu=document.querySelector('.desktop-menu');    //selecciona el elemento con la clase desktop-menu
+const mobileMenu=document.querySelector('.mobile-menu');    //selecciona el elemento con la clase mobile-menu
+const aside=document.querySelector('.product-detail');      //selecciona el elemento con la clase product-detail
+const cardsContainer=document.querySelector('.cards-container');    //selecciona el elemento con la clase cards-container
 
 
-//eventos
-navEmail.addEventListener('click',toggleDesktopMenu)
-menuHamburguesa.addEventListener('click',toggleMobileMenu)
-menuCarrito.addEventListener('click',toggleaside)
+menuEmail.addEventListener('click',toggleDesktopMenu); //se agrega un evento al hacer click en el menuEmail
+menuHamIcon.addEventListener('click',toggleMobileMenu); //  se agrega un evento al hacer click en el menuHamIcon
+menuCarritoIcon.addEventListener('click',toggleCarritoAside); // se agrega un evento al hacer click en el menuCarritoIcon
 
 
-//funciones
-function toggleDesktopMenu(){
-//desktop.classList.toggle('inactive')
-const escritorio = desktop.classList.contains('inactive');
- 
-if (!escritorio){
-    shoppingCart.classList.add('inactive') 
-   
-}
- 
-mobileMenu.classList.toggle('inactive')  
+function toggleDesktopMenu(){ //funcion que se ejecuta al hacer click en el menuEmail
+const isAsideClosed=aside.classList.contains('inactive'); //variable que verifica si el aside esta cerrado
+if(!isAsideClosed){aside.classList.add('inactive');} //si el aside esta cerrado se agrega una clase al aside
+desktopMenu.classList.toggle('inactive'); //se agrega una clase al desktopMenu
 }
 
-function toggleMobileMenu(){
-  const isAside = shoppingCart.classList.contains('inactive');
- 
-      if (!isAside){
-        shoppingCart.classList.add('inactive') 
-         
-      }
-       
-     mobileMenu.classList.toggle('inactive')  
-    }
+function toggleMobileMenu(){ //funcion que se ejecuta al hacer click en el menuHamIcon
+const isAsideClosed=aside.classList.contains('inactive'); //variable que verifica si el aside esta cerrado
+if(!isAsideClosed){aside.classList.add('inactive');} //si el aside esta cerrado se agrega una clase al aside
+mobileMenu.classList.toggle('inactive'); //se agrega una clase al mobileMenu
+}
 
+function toggleCarritoAside(){ //funcion que se ejecuta al hacer click en el menuCarritoIcon
+const isMobileMenuClosed=mobileMenu.classList.contains('inactive'); //variable que verifica si el mobileMenu esta cerrado
+if(!isMobileMenuClosed){mobileMenu.classList.add('inactive'); //si el mobileMenu esta cerrado se agrega una clase al mobileMenu
+}
+aside.classList.toggle('inactive');} //se agrega una clase al aside
 
-
-
-function toggleaside(){
-    
-    const mobileMenuClose = mobileMenu.classList.contains('inactive');
-
-    if (!mobileMenuClose){
-        mobileMenu.classList.add('inactive') 
-        
-    }
-    shoppingCart.classList.toggle('inactive')  
     
 
-}
-const productList = [];
-
-productList.push({
-    name: 'bike',
+// arreglos de productos
+var listaProductos = [];
+listaProductos.push({
+    name: 'Bike',
     price: 120,
-    image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+    image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
 });
- 
-productList.push({
-    name: 'pantalla',
-    price: 500,
-    image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
-})
- 
-productList.push({
-    name: 'computadora',
-    price: 1000,
-    image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+listaProductos.push({
+    name: 'Pantalla',
+    price: 220,
+    image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
 });
-productList.push({
-    name: 'muñeca System',
-    price: 69,
-    image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+listaProductos.push({
+    name: 'Compu',
+    price: 620,
+    image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+});
+listaProductos.push({
+    name: 'Compu',
+    price: 620,
+    image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+});
+listaProductos.push({
+    name: 'Compu',
+    price: 620,
+    image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+});
+listaProductos.push({
+    name: 'Compu',
+    price: 620,
+    image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+});
+listaProductos.push({
+    name: 'Compu',
+    price: 620,
+    image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+});
+listaProductos.push({
+    name: 'Compu',
+    price: 620,
+    image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
 });
 
-/*
-<div class="shopping-cart">
-<figure>
-  <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="bike">
-</figure>
-<p>Bike</p>
-<p>$30,00</p>
-<img src="./icons/icon_close.png" alt="close">
-</div>
-*/
-function renderProducts(){
-for (product of productList){
-    const productCard = document.createElement('div');
-    productCard.classList.add('product-card');
 
-    const productImg =document.createElement('img');
-    productImg.setAttribute('src', product.image);
+function renderProducts(array) { //funcion que recibe un arreglo de productos
+    for(product of array){ //recorre el arreglo de productos
+        const productCard  = document.createElement('div'); //crea un div
+        productCard.classList.add('product-card'); //agrega una clase al div
 
-    const productInfo = document.createElement('div');
-    productInfo.classList.add('product-info');
+        const productImg = document.createElement('img') //crea una imagen
+        productImg.setAttribute('src', product.image) //agrega un atributo a la imagen
 
-    const productInfoDiv = document.createElement('div');
-    
-    const productPrice = document.createElement('p');
-    productPrice.innerText = '$' + product.price;
-    const productName = document.createElement('p');
-    productName.innerText = product.name;
+        const productInfo = document.createElement('div') //    crea un div
+        productInfo.classList.add('product-info') //agrega una clase al div
 
-    productInfoDiv.appendChild(productName)
-    productInfoDiv.appendChild(productPrice)
+        const productInfoDiv = document.createElement('div') //crea un div
+        productInfoDiv.classList.add('product-info-div') //agrega una clase al div
+        
+        const productPrice = document.createElement('p') // crea un parrafo
+        productPrice.innerText = '$'+ product.price; //agrega un texto al parrafo
 
-    const productInfoFigure = document.createElement('figure');
-    const productImgCart = document.createElement('img');
-productImgCart.setAttribute('src','./icons/bt_add_to_cart.svg')
+        const productName = document.createElement('p') //crea un parrafo
+        productName.innerText = product.name; //agrega un texto al parrafo
 
-productInfoFigure.appendChild(productImgCart)
+        const productInfoFigure = document.createElement('figure') //crea un figure
+        const productImgCart = document.createElement('img') //crea una imagen
 
-productInfo.appendChild(productInfoDiv);
-productInfo.appendChild(productInfoFigure);
-productCard.appendChild(productImg);
-productCard.appendChild(productInfo);
+        productImgCart.setAttribute('src', './icons/bt_add_to_cart.svg') //agrega un atributo a la imagen
+        
+        productInfoDiv.appendChild(productPrice); //agrega un hijo al div
+        productInfoDiv.appendChild(productName); //agrega un hijo al div
 
-
-cardsContainer.appendChild(productCard);
+        productInfoFigure.appendChild(productImgCart) //agrega un hijo al figure
+        productCard.appendChild(productImg); //agrega un hijo al div
+        productCard.appendChild(productInfo); //agrega un hijo al div
+      
+        cardsContainer.appendChild(productCard); //agrega un hijo al div
+    }
 }
-
-}
-// product = {name, price, image} -> product.image
-
-renderProducts(productList);
-console.log(product.image)
+renderProducts(listaProductos); //llama a la funcion renderProducts y le pasa el arreglo de productos
+console.log(renderProducts);
